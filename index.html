@@ -1,0 +1,6303 @@
+﻿
+<!DOCTYPE html>
+<html lang="ro">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale= 0.3, maximum-scale= 0.9, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
+  <meta content="no-cache" http-equiv="Pragma"/>
+  <meta content="0" http-equiv="Expires"/>
+  <meta content="yes" name="mobile-web-app-capable"/>
+  <meta content="yes" name="apple-mobile-web-app-capable"/>
+  <title>
+   Pagina de Start Personalizată
+  </title>
+  <style>
+   * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 800%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      touch-action: manipulation;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f0f0f0;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+
+
+      min-height: 3500vh;
+      padding: 60px;
+      box-sizing: border-box;
+    }
+
+    .page-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      flex: 1;
+      padding: 0;
+      box-sizing: border-box;
+      max-width: 100vw;
+      overflow-x: hidden;
+    }
+
+
+
+
+    .page-title {
+      text-align: center;
+      font-size: 3em;
+      font-weight: bold;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+      margin: 10px 0;
+      padding: 10px;
+      width: 100%;
+      animation: float 3.5s ease-in-out infinite;
+      background: rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+      letter-spacing: 2px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header {
+      text-align: center;
+      width: 100%;
+      max-width: 100%;
+      padding: 5px;
+      margin: 0;
+      box-sizing: border-box;
+      overflow: hidden;
+    }
+    
+/*============================================================
+  STILURI DE BAZĂ PENTRU PAGINĂ
+============================================================*/
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to bottom, #6dd5fa, #2980b9, #ffffff);
+  color: #333;
+  min-height: 100vh;
+  transition: background 1s ease;
+}
+
+
+/*============================================================
+  STILURI PENTRU BACKGROUND DINAMIC BAZAT PE VREME
+============================================================*/
+body.clear { 
+  background: linear-gradient(to bottom, #6dd5fa, #2980b9, #ffffff); 
+}
+body.broken, 
+body.clouds { 
+  background: linear-gradient(to bottom, #8e9eab, #eef2f3); 
+}
+body.rain { 
+  background: linear-gradient(to bottom, #373B44, #4286f4); 
+}
+body.snow { 
+  background: linear-gradient(to bottom, #E0EAFC, #CFDEF3); 
+}
+body.thunderstorm { 
+  background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); 
+}
+body.fog { 
+  background: linear-gradient(to bottom, #B993D6, #8CA6DB); 
+}
+body.haze, 
+body.mist { 
+  background: linear-gradient(to bottom, #606c88, #3f4c6b); 
+}
+body.drizzle { 
+  background: linear-gradient(to bottom, #7F7FD5, #86A8E7, #91EAE4); 
+}
+body.dust, 
+body.sand { 
+  background: linear-gradient(to bottom, #C79081, #DFA579); 
+}
+
+
+/*============================================================
+  HEADER & CONTAINER
+============================================================*/
+#header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+#dateTime {
+  text-align: left;
+}
+
+#weather {
+  text-align: right;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+
+/*============================================================
+  STILURI COMUNE PENTRU CARDURI
+============================================================*/
+.weather-card,
+.datetime-card {
+  width: 99%;
+ max-width: 100%;
+
+  margin: 40px auto;
+  padding: 15px;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.8);
+  color: #333;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+
+
+
+
+
+
+/* Tema întunecată */
+.dark-theme .weather-card,
+.dark-theme .datetime-card {
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.weather-card:hover,
+.datetime-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+}
+
+
+/*============================================================
+  STILURI PENTRU CARDUL DE DATĂ ȘI ORĂ (DISPUS PE O SINGURĂ LINIE)
+============================================================*/
+.datetime-card {
+  /* Afișăm data (stânga) și ora (dreapta) pe aceeași linie */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left; /* Elimină centrul implicit */
+}
+
+/* Scoatem marginile/bordurile dintre data și ora */
+.date-part {
+  margin: 0;
+  padding: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.time-part {
+  margin: 0;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.day-name {
+  font-weight: bold;
+  font-size: 2em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.day-emoji,
+.time-emoji {
+  font-size: 2em;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+
+/* Reducem puțin fontul pentru a încăpea totul pe linie frumos */
+@media (max-width: 768px) {
+  .day-name {
+    font-size: 1.5em;
+  }
+  .day-emoji,
+  .time-emoji {
+    font-size: 1.5em;
+  }
+}
+
+.date-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1em;
+  margin: 0;
+}
+
+.date-number {
+  margin-right: 5px;
+}
+
+.week-number {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 0.85em;
+  font-style: italic;
+}
+
+.dark-theme .week-number {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.digital-clock {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 8px;
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+  animation: pulseTime 0.8s ease-out infinite;
+  will-change: transform, text-shadow;
+}
+
+.dark-theme .digital-clock {
+  background-color: rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.hours, 
+.minutes, 
+.seconds {
+  display: inline-block;
+  min-width: 30px;
+  text-align: center;
+}
+
+.time-separator {
+  opacity: 0.8;
+}
+
+.time-separator.blink {
+  animation: blink 1s infinite;
+}
+
+.minute-emoji {
+  font-size: 1.2em;
+  animation: pulse 2s infinite;
+}
+
+
+/*============================================================
+  STILURI PENTRU CARDUL DE VREME (DISPUS PE O SINGURĂ LINIE SUS)
+============================================================*/
+.weather-card {
+  overflow: hidden;
+}
+
+.weather-header {
+  /* Afișăm locația și temperatura pe aceeași linie */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.dark-theme .weather-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.weather-emoji {
+  font-size: 3em;
+  margin-bottom: 10px;
+  animation: float 3s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .weather-emoji {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.weather-location {
+  font-size: 1.4em;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin: 0; /* Scoate marginile */
+}
+
+.weather-temp {
+  font-size: 2.2em;
+  font-weight: bold;
+  margin: 0; /* Scoate marginile */
+}
+
+.weather-desc {
+  font-size: 1.1em;
+  color: rgba(0, 0, 0, 0.9);
+  font-style: italic;
+  text-transform: capitalize;
+  margin-top: 5px; /* un mic spațiu sub temperatură, dacă dorești */
+}
+
+.dark-theme .weather-desc {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+
+
+.weather-details {
+  margin-top: 15px;
+}
+
+.weather-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.weather-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 8px;
+  border-radius: 15px;
+  transition: all 0.2s ease;
+  flex: 1;
+  min-width: 110px;
+}
+
+.dark-theme .weather-info {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.weather-info:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
+.dark-theme .weather-info:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.weather-info .emoji {
+  font-size: 1.6em;
+  margin-bottom: 5px;
+}
+
+.weather-info .label {
+  font-size: 0.9em;
+  font-weight: bold;
+  margin-bottom: 3px;
+}
+
+.weather-info .value {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+
+
+.dark-theme .weather-info {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.weather-info:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+}
+
+.dark-theme .weather-info:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.weather-info span:first-child {
+  font-size: 0.85em;
+  opacity: 0.8;
+  margin-bottom: 3px;
+}
+
+.weather-info span:last-child {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+
+/*============================================================
+  STATE-URI SPECIALE
+============================================================*/
+.weather-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  text-align: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #2980b9;
+  animation: spin 1s linear infinite;
+  margin-bottom: 15px;
+}
+
+.dark-theme .loading-spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid white;
+}
+
+.weather-error {
+  color: #e74c3c;
+  text-align: center;
+  padding: 15px;
+  font-style: italic;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.dark-theme .weather-error {
+  color: #ff6b6b;
+}
+
+.weather-error button {
+  background-color: rgba(0, 0, 0, 0.1);
+  border: none;
+  color: #333;
+  padding: 8px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9em;
+  margin-top: 10px;
+}
+
+.dark-theme .weather-error button {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.weather-error button:hover {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.dark-theme .weather-error button:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+/*============================================================
+  CONTAINER PENTRU WIDGET-URI
+============================================================*/
+.widgets-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 0 15px;
+}
+
+
+/*============================================================
+  BUTON PENTRU COMUTAREA TEMEI (LUMINOS / ÎNTUNERIC)
+============================================================*/
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border: none;
+  font-size: 5em;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.dark-theme .theme-toggle {
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+}
+
+
+/*============================================================
+  FOOTER
+============================================================*/
+.footer {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 0.8em;
+  opacity: 0.7;
+  padding: 10px;
+  color: #333;
+}
+
+.dark-theme .footer {
+  color: white;
+}
+
+
+/*============================================================
+  ANIMAȚII
+============================================================*/
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes floatWeather {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes pulseTime {
+  0% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+  50% {
+    transform: scale(1.01);
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  }
+  100% {
+    transform: scale(1);
+    text-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
+/*============================================================
+  MEDIA QUERIES PENTRU RESPONSIVITATE
+============================================================*/
+@media (max-width: 768px) {
+  .weather-card,
+  .datetime-card {
+    padding: 12px;
+    width: 98%;
+    max-width: 98%;
+  }
+  
+  .time-part {
+    font-size: 1.2em;
+  }
+  
+  .weather-emoji {
+    font-size: 2.5em;
+  }
+  
+  .weather-temp {
+    font-size: 1.8em;
+  }
+  
+  .theme-toggle {
+    width: 40px;
+    height: 40px;
+    font-size: 1.2em;
+  }
+}
+
+@media (max-width: 1025px) {
+  .weather-row {
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .weather-info span:first-child {
+    font-size: 0.8em;
+  }
+  
+  .weather-info span:last-child {
+    font-size: 1em;
+  }
+  
+  .day-name {
+    font-size: 1.2em;
+  }
+  
+  .date-row {
+    flex-direction: column;
+    gap: 5px;
+  }
+  
+  .date-number {
+    margin-right: 0;
+  }
+  
+  .digital-clock {
+    padding: 3px 8px;
+    letter-spacing: 5px;
+  }
+}
+
+
+
+
+
+/* =========================================
+   OVERRIDE: Elementele text (fără emoji-uri)
+   ========================================= */
+.day-name,
+.time-part,
+.date-row,
+.date-number,
+.week-number,
+.digital-clock,
+.weather-location,
+.weather-temp,
+.weather-desc,
+.weather-info .label,
+.weather-info .value {
+  font-size: 1.5em !important;
+}
+
+/* =========================================
+   OVERRIDE: Emoji-uri (mărimi mai mari)
+   ========================================= */
+.day-emoji,
+.time-emoji,
+.weather-emoji,
+.weather-info .emoji {
+  font-size: 2.5em !important;
+}
+
+
+.clock {
+  animation: pulseTime 0.8s ease-out infinite;
+  will-change: transform, text-shadow;
+animation: floatWeather 1.8s ease-in-out infinite;
+}
+
+.weather-widget {
+  animation: floatWeather 1.8s ease-in-out infinite;
+}
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  /* ===================================
+   RESET ȘI VARIABILE GLOBALE
+   =================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Meta viewport pentru a preveni problemele de scroll pe mobil */
+@-ms-viewport {
+  width: device-width;
+}
+
+@viewport {
+  width: device-width;
+}
+
+:root {
+  --button-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  --button-shadow-hover: 0 8px 20px rgba(0, 0, 0, 0.3);
+  --button-border: 2px solid rgba(255, 255, 255, 0.3);
+  --button-border-hover: 2px solid rgba(255, 255, 255, 0.5);
+  --button-transition: all 0.3s ease;
+  --form-bg: rgba(255, 255, 255, 0.85);
+  --form-input-bg: #f1f1f1;
+  --form-input-focus: #e8f0fe;
+  --form-input-border-focus: #007bff;
+}
+
+/* ===================================
+   CONTAINERE PRINCIPALE
+   =================================== */
+
+/* Stiluri de bază pentru toate containerele de butoane */
+.permanent-buttons, 
+.sites-container, 
+.buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  box-sizing: border-box;
+}
+
+/* Pentru containerele care folosesc grid (dacă preferi) */
+.buttons-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(65px, 1fr));
+  padding: 15px;
+}
+
+/* Container principal pentru secțiunea de adăugare site */
+.site-add-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px auto;
+  max-width: 90%;
+}
+
+/* Containerul butonului toggle */
+.toggle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+/* ===================================
+   BUTOANE COMUNE
+   =================================== */
+
+/* Stiluri comune pentru toate butoanele */
+.permanent-button, 
+.site-button, 
+.toggle-add-site {
+  /* Elimină efectul de tap pe mobil și outline pentru toate butoanele */
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  
+  width: 65px;
+  height: 65px;
+  border-radius: 50% !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  flex-shrink: 0;
+  margin: 0;
+  padding: 0;
+  
+  animation: float 3s ease-in-out infinite;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: transform 0.2s;
+}
+
+/* Stări focus și active - eliminarea efectelor implicite ale browserului */
+.permanent-button:focus, 
+.site-button:focus, 
+.toggle-add-site:focus,
+.permanent-button:active, 
+.site-button:active, 
+.toggle-add-site:active {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ===================================
+   BUTON TOGGLE
+   =================================== */
+
+/* Stiluri specifice pentru butonul toggle */
+.toggle-add-site {
+  width: clamp(90px, 30vw, 150px);
+  height: clamp(90px, 30vw, 150px);
+  background: linear-gradient(45deg, #FF416C, #FF4B2B);
+  border: 4px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  margin: 30px auto;
+  z-index: 10;
+  animation: pulsate 3s ease-in-out infinite;
+}
+
+/* Simbolul plus pentru butonul toggle */
+.toggle-add-site::before {
+  content: "➕";
+  font-size: clamp(70px, 5vw, 70px);
+  color: white;
+  display: block;
+  transition: transform 0.5s ease;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Starea activă pentru butonul toggle */
+.toggle-add-site.active {
+  box-shadow: none;
+  background: linear-gradient(45deg, #E93E6B, #E73A20);
+}
+
+.toggle-add-site.active::before {
+  transform: rotate(720deg);
+}
+
+/* Eticheta pentru butonul toggle */
+.toggle-label {
+  margin-top: 10px;
+  font-size: clamp(46px, 1.5vw, 24px);
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+}
+
+/* ===================================
+   BUTOANE DE SITE ȘI PERMANENTE
+   =================================== */
+
+/* Simbol link pentru butoanele site */
+.site-button::before {
+  content: "🔗";
+  position: absolute;
+  font-size: 1.5em;
+  opacity: 0.1;
+}
+
+/* Stiluri pentru imagini (iconițe) */
+.permanent-button img, 
+.site-button img {
+  width: 50%;
+  height: auto;
+  min-width: 30px;
+  max-height: 50%;
+  object-fit: contain;
+  margin-bottom: 2px;
+}
+
+/* Stiluri pentru text */
+.permanent-button span, 
+.site-button span {
+  font-size: clamp(2.3em, 1vw + 0.5em, 2.3em);
+  font-weight: bold;
+  margin-top: 0.5em;
+  text-align: center;
+  color: white;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  margin-top: 2px;
+  text-align: center;
+  max-width: 90%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.1;
+  display: block;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Culori alternative pentru butoanele de site */
+.site-button:nth-child(3n+1) {
+  background: linear-gradient(145deg, #2193b0, #6dd5ed);
+}
+
+.site-button:nth-child(3n+2) {
+  background: linear-gradient(145deg, #834d9b, #d04ed6);
+}
+
+.site-button:nth-child(3n+3) {
+  background: linear-gradient(145deg, #009245, #FCEE21);
+}
+
+/* ===================================
+   INTERACȚIUNI (HOVER, ACTIVE)
+   =================================== */
+
+/* Hover butoane */
+.site-button:hover {
+  animation: bounce 0.5s ease;
+  background: linear-gradient(45deg, #00f2fe, #4facfe);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+  border: 2px solid rgba(255, 255, 255, 0.5);
+}
+
+.permanent-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  animation: bounce 0.5s ease;
+}
+
+.toggle-add-site:hover {
+  transform: rotate(20deg) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Active states */
+.toggle-add-site:active,
+.site-button:active,
+.permanent-button:active,
+.active-button {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* ===================================
+   ELEMENTE OVERLAY (EDIT/DELETE)
+   =================================== */
+
+.edit-delete {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 2;
+  animation: fadeIn 0.3s ease;
+}
+
+.edit-delete button {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  font-size: 4em;
+  margin: 15px;
+  cursor: pointer;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.edit-delete button:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.site-button.long-pressed .edit-delete {
+  display: flex;
+}
+
+/* ===================================
+   FORMULAR ADĂUGARE SITE
+   =================================== */
+
+.add-site {
+  margin: 20px auto 100px; /* Mai mult spațiu jos pentru a preveni saltul */
+  max-width: 90%;
+  background: rgba(255, 255, 255, 0.85);
+  padding: 20px;
+  border-radius: 20px;
+  display: none;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  width: 100%;
+  box-sizing: border-box;
+  
+  /* Importante pentru stabilitate */
+  transform: translateZ(0); /* Forțează hardware acceleration */
+  -webkit-transform: translateZ(0);
+  position: relative; /* Ajută la stabilizarea poziției */
+  
+  /* Înălțime minimă fixă pentru a preveni fluctuațiile */
+  min-height:1200px;
+  
+  /* Eliminăm complet animațiile care pot cauza instabilitate */
+  transition: none;
+}
+
+.add-site h3 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 15px;
+  font-size: clamp(100px, 5vw,150px);
+  color: #333;
+}
+
+/* Container separat pentru elementele de input care ar putea cauza salturi */
+.add-site-form-inputs {
+  position: relative; /* Ajută la stabilizarea poziției */
+  width: 100%;
+  padding-bottom: 50px; /* Spațiu pentru tastatură */
+}
+
+/* Câmpuri de input cu border fix pentru stabilitate */
+.add-site input {
+  width: 100%;
+  padding: clamp(12px, 3vw, 50px);
+  margin: 8px 0;
+  border: 3px solid #f1f1f1; /* Bordură vizibilă în loc de transparentă */
+  border-radius: 12px;
+  background: #f1f1f1;
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+  font-size: clamp(70px, 2vw, 70px);
+  box-sizing: border-box;
+  
+  /* Previne comportamente implicite care cauzează salturi */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.add-site input:focus {
+  outline: none;
+  background: #e8f0fe;
+  border: 3px solid #007bff;
+  
+  /* Previne scrollarea la focus */
+  scroll-margin-top: 1000px;
+}
+
+/* Buton de submit */
+.add-site button {
+  width: 100%;
+  padding: clamp(12px, 2vw, 24px);
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(45deg, #007bff, #00c6ff);
+  color: white;
+  font-size: clamp(300px, 2vw, 300px);
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  transition: background 0.3s ease;
+  
+  /* Previne scroll la click */
+  -webkit-tap-highlight-color: transparent;
+}
+
+.add-site button:hover {
+  background: linear-gradient(45deg, #0056b3, #00aaff);
+}
+
+/* Clase pentru animații */
+.add-site.visible {
+  display: block;
+  animation: none; /* Eliminăm animația pentru stabilitate */
+  opacity: 1; /* Asigurăm că este vizibil */
+  transform: translateZ(0); /* Forțează hardware acceleration */
+}
+
+/* ===================================
+   ANIMAȚII
+   =================================== */
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-5px); }
+  100% { transform: translateY(0px); }
+}
+
+@keyframes pulsate {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes bounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Adăugare între head pentru a controla viewport și preveni zoom */
+@media screen and (max-width: 768px) {
+  html, body {
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+  }
+  
+  /* Previne scrollarea automată când tastatura apare */
+  input, textarea, select {
+    font-size: 16px !important; /* Previne zoom-ul automat pe iOS */
+  }
+}
+
+/* ===================================
+   MEDIA QUERIES
+   =================================== */
+
+/* Mobile - Ecrane mici */
+@media (max-width: 360px) {
+  .permanent-button, 
+  .site-button {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .permanent-buttons, 
+  .sites-container {
+    gap: 10px;
+  }
+  
+  .permanent-button img, 
+  .site-button img {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .permanent-button span, 
+  .site-button span {
+    font-size: 1.5em;
+  }
+}
+
+/* Tablete și desktop mic */
+@media (min-width: 481px) and (max-width: 1024px) {
+  .permanent-button, 
+  .site-button {
+    width: 220px;
+    height: 220px;
+  }
+  
+  .permanent-button img, 
+  .site-button img {
+    width: 70px;
+    height: 70px;
+  }
+}
+
+/* Desktop mare */
+@media (min-width: 1025px) {
+  .permanent-button, 
+  .site-button {
+    width: 280px;
+    height: 180px;
+  }
+  
+  .permanent-button img, 
+  .site-button img {
+    width: 90px;
+    height: 70px;
+  }
+  
+  .permanent-button span, 
+  .site-button span {
+    font-size: 2.3em;
+  }
+}
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+  
+
+
+#yahooButton,
+#youtubeButton,
+#facebookButton,
+#ebayButton,
+#clicksudButton,
+#filelistButton,
+#divxButton,
+#imdbButton,
+#DeepAIButton,
+#arduinoButton,
+#openaiButton,
+#blynkButton,
+#appinventorButton,
+#githubButton,
+#gmailButton,
+#adafruitButton,
+#dropboxButton,
+#kodularButton,
+#makewithtecButton,
+#microsoftButton,
+#deepseekButton,
+#geminiaiButton,
+#teamviewerButton,
+#elevenlabsButton,
+#ebayukButton,
+#aliexpressButton,
+#fiverrButton,
+#lebaraButton,
+#paypalButton,
+#counciltaxtelfordButton,
+#octopusenergyButton,
+#standardlifeButton,
+#virginmediaButton,
+#universalcreditukButton,
+#deeplButton,
+#surfsharkButton,
+#totalavButton,
+#quillbotButton,
+#trading212Button,
+#etoroButton {
+  border-radius: 75px;
+  background: linear-gradient(145deg, #2081e2, #0f85cc); /* Culoare default */
+
+}
+
+
+
+
+
+
+
+
+ 
+  
+  /* Stiluri de bază pentru body */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Permite scroll-ul pe verticală */
+    margin: 0;
+    padding: 0;
+    min-height: 6000vh;
+    background-color: #f5f5f5;
+    box-sizing: border-box;
+}
+
+.search-container-v2 {
+    width: clamp(280px, 95%, 3000px);
+    position: relative;
+    animation: float-v2 3s ease-in-out infinite;
+    margin: 5px auto 10px;
+    padding-top: 60px; /* Adăugat padding sus */
+    padding-bottom: 60px; /* Adăugat padding jos */
+    -webkit-tap-highlight-color: transparent;
+}
+/* Stilul formularului de căutare */
+.search-form-v2 {
+    display: flex;
+    height: clamp(150px, 10vh, 0px); /* Înălțime responsive */
+    border-radius: clamp(150px, 5vh, 150px);
+    border: 1px solid #dfe1e5;
+    background-color: #fff;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(32, 33, 36, 0.15);
+    width: 100%;
+}
+
+/* Efect de focus pentru formular */
+.search-form-v2:focus-within {
+    box-shadow: 0 8px 20px rgba(66, 133, 244, 0.2);
+    border-color: #4285f4;
+}
+
+/* Stiluri pentru input-ul de căutare */
+.search-input-v2 {
+    flex: 1;
+    padding: clamp(12px, 2vw, 24px);
+    font-size: clamp(16px, 5vw, 50px); /* Fonturi mari, indiferent de dispozitiv */
+    border: none;
+    outline: none;
+    width: 100%;
+    transition: padding 0.3s ease;
+    font-family: inherit;
+}
+
+/* Efect de focus pentru input */
+.search-input-v2:focus {
+    padding-top: clamp(10px, 1.8vw, 18px);
+    padding-bottom: clamp(10px, 1.8vw, 18px);
+}
+
+/* Stiluri pentru iconița de căutare */
+.search-icon-v2 {
+    display: flex;
+    align-items: center;
+    padding: clamp(48px, 2vw, 48px);
+    cursor: pointer;
+    background: none;
+    border: none;
+    right: 0; /* Poziționarea în dreapta în loc de stânga */
+    position: relative;
+    transition: transform 0.3s ease;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Iconița de căutare (emoji) */
+.search-icon-v2::before {
+    content: "🔍";
+    font-size: clamp(100px, 8vw, 100px); /* Icoane mari */
+    animation: bounce-v2 1.5s infinite;
+}
+
+/* Efect hover pentru iconița de căutare */
+.search-icon-v2:hover {
+    transform: scale(1.1);
+}
+
+
+
+/* Comportament la hover/active/focus pentru iconiță */
+.search-icon-v2:hover::before,
+.search-icon-v2:active::before,
+.search-icon-v2:focus::before {
+    opacity: 0;
+    animation: none;
+}
+
+.search-icon-v2:hover svg,
+.search-icon-v2:active svg,
+.search-icon-v2:focus svg {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    fill: #2196F3;
+}
+
+/* Stil pentru path-ul SVG */
+.search-icon-v2 path {
+    fill: #4285f4;
+    transition: fill 0.3s ease;
+}
+
+/* Animație de plutire */
+@keyframes float-v2 {
+    0% {
+        transform: translateY(0) rotate(-1deg);
+    }
+    50% {
+        transform: translateY(clamp(-5px, -1vh, -10px)) rotate(1deg);
+    }
+    100% {
+        transform: translateY(0) rotate(-1deg);
+    }
+}
+
+/* Animație de săritură */
+@keyframes bounce-v2 {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(clamp(-3px, -0.5vh, -5px)) scale(1.1);
+    }
+}
+
+/* Media queries pentru dispozitive mobile */
+@media (max-width: 768px) {
+    .search-container-v2 {
+        width: 90%;
+        margin-top: clamp(30px, 5vh, 60px);
+        animation: float-v2 4s ease-in-out infinite;
+    }
+    
+    .search-form-v2 {
+        height: clamp(50px, 8vh, 80px);
+        border-radius: 25px;
+    }
+    
+    /* Păstrăm fonturile și icoanele mari, ajustând doar padding-ul */
+    .search-input-v2 {
+        padding: clamp(12px, 2vw, 24px);
+    }
+    
+    .search-icon-v2::before {
+        font-size: clamp(48px, 8vw, 100px);
+    }
+}
+
+/* Media query pentru ecrane foarte mici */
+@media (max-width: 480px) {
+    .search-container-v2 {
+        width: 95%;
+        margin-top: 20px;
+    }
+    
+    .search-form-v2 {
+        height: 50px;
+        border-radius: 25px;
+    }
+    
+    .search-input-v2 {
+        padding: clamp(12px, 2vw, 24px);
+    }
+    
+    .search-icon-v2 {
+        padding: clamp(5px, 2vw, 10px);
+    }
+    
+    .search-icon-v2::before {
+        font-size: clamp(48px, 8vw, 100px);
+    }
+}
+
+/* Media query pentru dispozitive cu lățime minimă de 1025px */
+@media (min-width: 1025px) {
+    .search-container-v2 {
+        max-width: 3000px;
+        margin: 20px auto;
+    }
+    
+    /* Poți ajusta înălțimea sau alte proprietăți, dacă e necesar */
+    .search-form-v2 {
+        height: clamp(150px, 8vh, 500px);
+    }
+    
+    .search-input-v2 {
+        font-size: clamp(100px, 5vw, 120px);
+        padding: clamp(12px, 2vw, 24px);
+    }
+    
+    .search-icon-v2::before {
+        font-size: clamp(100px, 8vw, 150px);
+    }
+}
+
+/* Ajustări pentru dispozitive cu densitate mare de pixeli */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .search-form-v2 {
+        border-width: 05px;
+    }
+}
+
+/* Eliminăm efectele de outline și tap highlight pentru elementele interactive */
+.search-form-v2,
+.search-input-v2,
+.search-icon-v2,
+.search-form-v2:focus,
+.search-input-v2:focus,
+.search-icon-v2:focus,
+.search-form-v2:active,
+.search-input-v2:active,
+.search-icon-v2:active {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+/* Stiluri pentru bara de căutare responsive */
+.search-container {
+    width: 90%;
+    max-width: 3000px;
+    min-width: 500px;
+    margin: 10px auto 30px;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.search-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50px; /* Valoare fixă */
+    border: 2px solid #ddd; /* Valoare fixă */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.3s;
+    padding-right: 60px; /* Valoare fixă */
+    overflow: hidden;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px; /* Valoare fixă */
+    font-size: 50px; /* Valoare fixă pentru fonturi mari */
+    border: none;
+    outline: none;
+    background: transparent;
+    transition: all 0.3s;
+    font-family: inherit;
+    color: #333;
+}
+
+/* Elimină stilurile de autofill ale browserului */
+.search-input:-webkit-autofill,
+.search-input:-webkit-autofill:hover,
+.search-input:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.9) inset;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+/* Iconița de căutare (lupa) */
+.search-icon {
+    position: absolute;
+    right: 50px; /* Valoare fixă */
+    cursor: pointer;
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Valoare fixă */
+    width: 50px;   /* Valoare fixă */
+    height: 50px;  /* Valoare fixă */
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Emoji lupa cu animația bounce */
+.search-icon::before {
+    content: "🔍";
+    font-size: 60px; /* Valoare fixă pentru icoane mari */
+    display: block;
+    animation: bounce 1.5s infinite;
+    transition: opacity 0.3s ease;
+}
+
+/* SVG pentru iconița rotativă */
+.search-icon svg {
+    width: 58px;  /* Valoare fixă */
+    height: 58px; /* Valoare fixă */
+    position: absolute;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    fill: #666;
+}
+
+/* Butonul de ștergere */
+.clear-search {
+    position: absolute;
+    right: 60px; /* Valoare fixă */
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 24px; /* Valoare fixă */
+    display: none;
+    padding: 10px; /* Valoare fixă */
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Stările interactive */
+.search-wrapper:focus-within {
+    border-color: #2196F3;
+    box-shadow: 0 0 0 3px rgba(33, 150, 243, 0.3);
+}
+
+/* Elimină outline-ul pentru toate elementele din container */
+.search-container *:focus,
+.search-wrapper:focus-within,
+.search-input:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+/* Opțional: stil pentru accesibilitate */
+.search-input:focus {
+    border-color: #2196F3;
+}
+
+/* Efect hover pentru iconița de căutare (lupa) */
+.search-icon:hover::before,
+.search-icon:active::before,
+.search-icon:focus::before {
+    opacity: 0;
+    animation: none;
+}
+
+.search-icon:hover svg,
+.search-icon:active svg,
+.search-icon:focus svg {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+    fill: #2196F3;
+}
+
+.clear-search:hover,
+.clear-search:focus {
+    color: #f44336;
+}
+
+/* Animații */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); } /* Valoare fixă */
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+  
+  
+  
+  
+/* Clasă pentru animația rotativă la click */
+.search-icon.active svg {
+    opacity: 1;
+    transform: scale(1);
+    animation: rotate 0.5s ease;
+}
+
+/* Efect de plutire pentru container */
+.search-container.float-effect {
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-8px); } /* Valoare fixă */
+}
+
+/* Eliminarea efectelor nedorite pentru toate elementele interactive */
+.search-container *,
+.search-container *:focus,
+.search-container *:active {
+    outline: none !important;
+    -webkit-tap-highlight-color: transparent !important;
+}
+
+/* Responsivitate pentru dispozitive mici */
+@media (max-width: 768px) {
+    .search-container {
+        width: 95%;
+        min-width: unset;
+    }
+    
+    .search-wrapper {
+        border-radius: 50px;
+        padding-right: 60px;
+    }
+}
+
+/* Optimizări pentru ecrane foarte mici */
+@media (max-width: 480px) {
+    .search-wrapper {
+        padding-right: 60px;
+    }
+    
+    .clear-search {
+        right: 60px;
+    }
+}
+
+/* Optimizări pentru dispozitive cu touchscreen */
+@media (hover: none) {
+    .search-icon,
+    .clear-search {
+        min-width: 44px;
+        min-height: 44px;
+    }
+}
+
+/* Suport pentru dark mode */
+@media (prefers-color-scheme: dark) {
+    .search-wrapper {
+        background: rgba(40, 40, 40, 0.9);
+        border-color: #444;
+    }
+    
+    .search-input {
+        color: #eee;
+    }
+    
+    .search-input:-webkit-autofill,
+    .search-input:-webkit-autofill:hover,
+    .search-input:-webkit-autofill:focus {
+        -webkit-box-shadow: 0 0 0px 1000px rgba(40, 40, 40, 0.9) inset;
+        -webkit-text-fill-color: #eee;
+    }
+    
+    .search-icon::before {
+        opacity: 0.9;
+    }
+    
+    .search-icon svg {
+        fill: #aaa;
+    }
+    
+    .clear-search {
+        color: #aaa;
+    }
+    
+    .search-wrapper:focus-within {
+        border-color: #64B5F6;
+        box-shadow: 0 0 0 3px rgba(100, 181, 246, 0.3);
+    }
+} 
+  
+  
+  
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+.site-button.selected,
+.permanent-button.selected {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+    border: 6px solid #ff0000 !important;
+    z-index: 1000;
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+    100% { transform: scale(1); }
+}
+
+.site-button,
+.permanent-button {
+    transition: all 0.5s ease;
+    margin: 5px;
+}
+
+
+
+
+
+
+
+
+
+.site-button.selected:hover,
+.permanent-button.selected:hover {
+    transform: scale(1.05);
+}
+
+.no-results-message {
+    color: #dc3545;
+    padding: 3rem;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+
+
+.drag-ghost {
+      opacity: 0.5;
+      background: #ccc;
+    }
+
+
+
+
+
+ .permanent-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      box-sizing: border-box;
+    }
+
+
+  
+  
+ /* Stiluri de bază pentru butoane */
+.site-button,
+.permanent-button {
+  border-radius: 75px;
+  transition: all 0.5s ease;
+  margin: 5px;
+}
+
+/* Culori pentru butoanele permanente */
+#yahooButton_1 {
+  background: linear-gradient(145deg, #720e9e, #4a0269);
+}
+
+#youtubeButton_57 {
+  background: linear-gradient(145deg, #ff0000, #cc0000);
+}
+
+#facebookButton_58 {
+  background: linear-gradient(145deg, #1877f2, #0a5dc5);
+}
+
+#ebayButton_59 {
+  background: linear-gradient(145deg, #e53238, #a21a1f);
+}
+
+/* Culori pentru butoanele de site-uri */
+#clicksudButton_2 {
+  background: linear-gradient(145deg, #ff6b6b, #ee5253);
+}
+
+#filelistButton_3 {
+  background: linear-gradient(145deg, #5f27cd, #341f97);
+}
+
+#divxButton_4 {
+  background: linear-gradient(145deg, #ff9f43, #ee5a24);
+}
+
+#imdbButton_5 {
+  background: linear-gradient(145deg, #f1c40f, #f39c12);
+}
+
+#DeepAIButton_6 {
+  background: linear-gradient(145deg, #6c5ce7, #546de5);
+}
+
+#arduinoButton_7 {
+  background: linear-gradient(145deg, #00b894, #00a896);
+}
+
+#openaiButton_8 {
+  background: linear-gradient(145deg, #10ac84, #079992);
+}
+
+#blynkButton_9 {
+  background: linear-gradient(145deg, #ff4757, #ef3d52);
+}
+
+#appinventorButton_10 {
+  background: linear-gradient(145deg, #2ed573, #1dd1a1);
+}
+
+#githubButton_11 {
+  background: linear-gradient(145deg, #576574, #222f3e);
+}
+
+#gmailButton_12 {
+  background: linear-gradient(145deg, #d44638, #b23121);
+}
+
+#adafruitButton_13 {
+  background: linear-gradient(145deg, #fa8231, #fd9644);
+}
+
+#dropboxButton_14 {
+  background: linear-gradient(145deg, #0061ff, #0051d3);
+}
+
+#kodularButton_15 {
+  background: linear-gradient(145deg, #ff7675, #d63031);
+}
+
+#makewithtecButton_16 {
+  background: linear-gradient(145deg, #54a0ff, #2e86de);
+}
+
+#microsoftButton_17 {
+  background: linear-gradient(145deg, #00a8ff, #007aff);
+}
+
+#deepseekButton_18 {
+  background: linear-gradient(145deg, #5352ed, #3742fa);
+}
+
+#geminiaiButton_19 {
+  background: linear-gradient(145deg, #a55eea, #8854d0);
+}
+
+#teamviewerButton_20 {
+  background: linear-gradient(145deg, #0e7dff, #0a67d4);
+}
+
+#elevenlabsButton_21 {
+  background: linear-gradient(145deg, #fc5c65, #eb3b5a);
+}
+
+#ebayukButton_22 {
+  background: linear-gradient(145deg, #20bf6b, #0fb95a);
+}
+
+#aliexpressButton_23 {
+  background: linear-gradient(145deg, #e84118, #c23616);
+}
+
+#fiverrButton_24 {
+  background: linear-gradient(145deg, #1abc9c, #16a085);
+}
+
+#lebaraButton_25 {
+  background: linear-gradient(145deg, #ff3838, #e83232);
+}
+
+#paypalButton_26 {
+  background: linear-gradient(145deg, #0070ba, #005ea6);
+}
+
+#counciltaxtelfordButton_27 {
+  background: linear-gradient(145deg, #27ae60, #2ecc71);
+}
+
+#octopusenergyButton_28 {
+  background: linear-gradient(145deg, #4834d4, #3c28b3);
+}
+
+#standardlifeButton_29 {
+  background: linear-gradient(145deg, #3498db, #2980b9);
+}
+
+#virginmediaButton_30 {
+  background: linear-gradient(145deg, #e74c3c, #c0392b);
+}
+
+#universalcreditukButton_31 {
+  background: linear-gradient(145deg, #4cd137, #44bd32);
+}
+
+#deeplButton_32 {
+  background: linear-gradient(145deg, #686de0, #4834d4);
+}
+
+#surfsharkButton_33 {
+  background: linear-gradient(145deg, #22a6b3, #1c8a97);
+}
+
+#totalavButton_34 {
+  background: linear-gradient(145deg, #3867d6, #2f57bd);
+}
+
+#quillbotButton_35 {
+  background: linear-gradient(145deg, #8e44ad, #7d3c98);
+}
+
+#trading212Button_36 {
+  background: linear-gradient(145deg, #45aaf2, #3897e1);
+}
+
+#etoroButton_37 {
+  background: linear-gradient(145deg, #1aa472, #168a5f);
+}
+
+#filmehdAPIButton_38 {
+  background: linear-gradient(145deg, #c56cf0, #a04ab7);
+}
+
+#voxFilmeButton_39 {
+  background: linear-gradient(145deg, #b6344e, #9b2941);
+}
+
+#justWatchFilmeButton_40 {
+  background: linear-gradient(145deg, #e67e22, #d35400);
+}
+
+#portalulTVButton_41 {
+  background: linear-gradient(145deg, #bd2a4e, #a12240);
+}
+
+#topFilmeHDButton_42 {
+  background: linear-gradient(145deg, #12cbc4, #0fa19a);
+}
+
+#cinepubFilmeButton_43 {
+  background: linear-gradient(145deg, #63cdda, #55b3c0);
+}
+
+#plutoTVButton_44 {
+  background: linear-gradient(145deg, #778ca3, #67748b);
+}
+
+#despreSerialeButton_45 {
+  background: linear-gradient(145deg, #574b90, #4a3f7d);
+}
+
+#voyoButton_46 {
+  background: linear-gradient(145deg, #f53b57, #d63447);
+}
+
+#filmflixButton_47 {
+  background: linear-gradient(145deg, #3dc1d3, #34a8b7);
+}
+
+#tubiButton_48 {
+  background: linear-gradient(145deg, #e15f41, #c44f37);
+}
+
+#movies123Button_49 {
+  background: linear-gradient(145deg, #f78fb3, #df7b97);
+}
+
+#crackleButton_50 {
+  background: linear-gradient(145deg, #546de5, #4661c9);
+}
+
+#rokuButton_51 {
+  background: linear-gradient(145deg, #786fa6, #675f90);
+}
+
+#filmzieButton_52 {
+  background: linear-gradient(145deg, #f19066, #e17055);
+}
+
+#yidioButton_53 {
+  background: linear-gradient(145deg, #303952, #252b43);
+}
+
+#fawesomeButton_54 {
+  background: linear-gradient(145deg, #9b59b6, #8e44ad);
+}
+
+#contvButton_55 {
+  background: linear-gradient(145deg, #26de81, #20bf6b);
+}
+
+#cinebyButton_56 {
+  background: linear-gradient(145deg, #0abde3, #09a8c8);
+}
+
+#amazonTranslateButton_60 {
+  background: linear-gradient(145deg, #ff9a00, #e58a00);
+}
+
+#smartcatButton_61 {
+  background: linear-gradient(145deg, #4bcffa, #40b9e2);
+}
+
+#bingTranslatorButton_62 {
+  background: linear-gradient(145deg, #00b0ff, #0098da);
+}
+
+#grammarlyButton_63 {
+  background: linear-gradient(145deg, #11998e, #0d7a70);
+}
+
+#gingerButton_64 {
+  background: linear-gradient(145deg, #eb4d4b, #d44240);
+}
+
+#hemingwayButton_65 {
+  background: linear-gradient(145deg, #ED8055, #D36B47);
+}
+
+#grammarCheckButton_66 {
+  background: linear-gradient(145deg, #006266, #00494d);
+}
+
+#scribbrButton_67 {
+  background: linear-gradient(145deg, #1e3799, #192e81);
+}
+
+/* Efect hover pentru toate butoanele */
+.site-button:hover,
+.permanent-button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  filter: brightness(110%);
+  background-position: right center;
+}
+
+/* Efect pentru butonul selectat */
+.site-button.selected,
+.permanent-button.selected {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
+  border: 6px solid #ff0000 !important;
+  z-index: 1000;
+  animation: pulse 1s infinite;
+}
+
+  
+  
+  
+  
+  /* Ajustări pentru body și layout general */
+body {
+  padding-top: 10px;
+  min-height: 100vh;
+  font-size: 18px; /* Mărim fontul pentru întregul corp */
+}
+
+.page-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+}
+
+.page-title {
+  margin: 0 0 5px 0;
+  padding: 5px;
+  font-size: 24px; /* Mărire titlu */
+}
+
+.header {
+  margin: 0 0 5px 0;
+  padding: 0;
+  width: 100%;
+  font-size: 22px; /* Mărire header */
+}
+
+.weather-card, 
+.datetime-card,
+.search-container,
+.search-container-v2,
+.search-history-container {
+  flex-shrink: 0;
+  margin: 5px auto;
+  font-size: 18px; /* Mărire font pentru carduri și containere */
+}
+
+.search-history-container {
+  width: clamp(280px, 95%, 3000px);
+  background: rgba(255, 255, 255, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  position: relative;
+  z-index: 1;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  animation: float-history 4s ease-in-out infinite;
+  font-size: 18px; /* Mărire font pentru istoricul de căutări */
+}
+
+.search-container-v2 {
+  margin-bottom: 0;
+}
+
+.search-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 5px;
+  margin-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 20px; /* Mărire font header căutări */
+}
+
+.search-history-title {
+  font-size: clamp(50px, 3vw, 56px); /* Mărire titlu istoric */
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+}
+
+.search-history-title::before {
+  content: "🔍";
+  font-size: 1.4em; /* Mărire icon */
+  margin-right: 8px;
+}
+
+.search-history-clear {
+  background: none;
+  border: none;
+  font-size: clamp(50px, 3vw, 56px); /* Mărire font buton ștergere */
+  cursor: pointer;
+  color: #666;
+  padding: 5px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-history-clear:hover {
+  background: rgba(0, 0, 0, 0.05);
+  transform: scale(1.1);
+}
+
+.search-history-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.search-history-item {
+  background: linear-gradient(145deg, #e8f0fe, #d4e4f7);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: clamp(56px, 3vw, 50px); /* Mărire font elemente istorice */
+  color: #333;
+  cursor: pointer;
+  max-width: 800px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  position: relative;
+  padding-right: 60px; /* Adăugat spațiu în dreapta pentru butonul × */
+}
+
+.search-history-item::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  background: #4285f4;
+  border-radius: 50%;
+  margin-right: 10px;
+  flex-shrink: 0;
+}
+
+.search-history-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #f0f7ff, #e0f0ff);
+}
+
+.search-history-item:hover::after {
+  content: none !important; /* Dezactivăm complet comportamentul anterior */
+}
+
+/* Stilul pentru butonul de ștergere */
+.search-history-delete {
+  display: none;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #999;
+  font-weight: bold;
+  font-size: 2em;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer !important;
+  z-index: 20; /* Valoare mai mare pentru a asigura că este deasupra altor elemente */
+  width: 30px;
+  height: 30px;
+  background-color: transparent;
+  border-radius: 50%;
+}
+
+/* Arată butonul la hover pe elementul părinte */
+.search-history-item:hover .search-history-delete {
+  display: flex !important;
+}
+
+/* Efect la hover pe buton */
+.search-history-delete:hover {
+  color: #ff3333;
+  transform: translateY(-50%) scale(1.1);
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* Efect la apăsare pe buton */
+.search-history-delete:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Stiluri pentru tema întunecată */
+.dark-theme .search-history-delete {
+  color: #aaa;
+}
+
+.dark-theme .search-history-delete:hover {
+  color: #ff5555;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+
+
+
+
+
+.search-history-more {
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+  padding: 10px 18px;
+  border-radius: 50px;
+  font-size: clamp(14px, 3vw, 18px); /* Mărire font pentru butonul "mai multe" */
+  color: #555;
+  font-style: italic;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.search-history-more::before {
+  content: "📜";
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.search-history-more:hover {
+  background: linear-gradient(145deg, #e8e8e8, #d8d8d8);
+  transform: translateY(-2px);
+}
+
+.search-history-less {
+  background: linear-gradient(145deg, #e0e0e0, #d0d0d0);
+}
+
+.search-history-less::before {
+  content: "🔍";
+}
+
+.search-sort-toggle {
+  width: 100%;
+  background: linear-gradient(145deg, #f0f0f0, #e0e0e0);
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-size: clamp(56px, 3vw, 50px); /* Mărire font pentru butonul de sortare */
+  color: #444;
+  text-align: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-sort-toggle::before {
+  content: "🔄";
+  margin-right: 10px;
+  font-size: 1.2em;
+}
+
+.search-sort-toggle:hover {
+  background: linear-gradient(145deg, #e8e8e8, #d8d8d8);
+  transform: translateY(-2px);
+}
+
+.count-badge {
+  background: #4285f4;
+  color: white;
+  border-radius: 50%;
+  min-width: 58px;
+  height: 58px;
+  font-size: 50px; /* Mărire font badge frecvență */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  padding: 0 6px;
+  font-weight: bold;
+}
+
+@keyframes float-history {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-2px);
+  }
+}
+
+.search-history-empty {
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+  color: #777;
+  font-style: italic;
+  font-size: clamp(56px, 3vw, 60px); /* Mărire font pentru mesajul de istoric gol */
+}
+
+.dark-theme .search-history-container {
+  background: rgba(40, 40, 40, 0.85);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .search-history-title {
+  color: #e0e0e0;
+}
+
+.dark-theme .search-history-header {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .search-history-clear {
+  color: #aaa;
+}
+
+.dark-theme .search-history-clear:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .search-history-item {
+  background: linear-gradient(145deg, #3a3a3a, #444);
+  color: #e0e0e0;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .search-history-item:hover {
+  background: linear-gradient(145deg, #444, #505050);
+}
+
+.dark-theme .search-history-more,
+.dark-theme .search-sort-toggle {
+  background: linear-gradient(145deg, #3a3a3a, #444);
+  color: #ccc;
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.dark-theme .search-history-more:hover,
+.dark-theme .search-sort-toggle:hover {
+  background: linear-gradient(145deg, #444, #505050);
+}
+
+.dark-theme .search-history-less {
+  background: linear-gradient(145deg, #444, #363636);
+}
+
+.dark-theme .count-badge {
+  background: #5c9aff;
+}
+
+@media (max-width: 768px) {
+  .search-history-container {
+    padding: 12px;
+  }
+  
+  .search-history-items {
+    gap: 12px;
+  }
+  
+  .search-history-item, 
+  .search-history-more,
+  .search-sort-toggle {
+    padding: 8px 14px;
+    font-size: clamp(16px, 3vw, 20px); /* Mărire font pe mobile */
+  }
+  
+  .permanent-buttons, 
+  .sites-container {
+    margin: 8px 0; 
+    padding: 8px;
+  }
+}
+  </style>
+  
+ </head>
+ <body>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.0/Sortable.min.js">
+  </script>
+  <script>
+   // Adaugă un parametru de timestamp la URL pentru a forța reîncărcarea
+    if (!window.location.href.includes('v=')) {
+      const timestamp = new Date().getTime();
+      const separator = window.location.href.includes('?') ? '&' : '?';
+      window.location.href = window.location.href + separator + 'v=' + timestamp;
+    }
+    
+    // Când se face clic oriunde în pagină, verifică dacă trebuie să închizi meniurile deschise
+    document.addEventListener('click', function(event) {
+      // Verifică dacă clic-ul nu a fost pe un buton site sau pe opțiunile de editare/ștergere
+      if (!event.target.closest('.site-button')) {
+        // Închide toate meniurile deschise
+        document.querySelectorAll('.site-button.long-pressed').forEach(btn => {
+          btn.classList.remove('long-pressed');
+        });
+      }
+    }, true);
+  </script>
+  <div class="page-content">
+   <h1 class="page-title">
+    HERCULES MATUSALEM
+   </h1>
+   <div class="header">
+    <div class="date-time" id="dateTime">
+     🕒
+    </div>
+    <div class="weather" id="weather">
+     ☁️ Se încarcă vremea...
+    </div>
+   </div>
+   <div class="search-container-v2">
+    <form action="https://www.google.com/search" class="search-form-v2" id="searchForm" method="GET">
+     <input autocomplete="off" class="search-input-v2" id="searchInput" name="q" placeholder="Search Google" type="text"/>
+     <button aria-label="Search" class="search-icon-v2" type="submit">
+      <svg height="28" viewbox="0 0 24 24" width="28" xmlns="http://www.w3.org/2000/svg">
+       <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+       </path>
+      </svg>
+     </button>
+    </form>
+   </div>
+   <div class="search-history-container">
+    <div class="search-history-header">
+     <span class="search-history-title">
+      Ultimele căutări
+     </span>
+     <button class="search-history-clear" title="Șterge tot istoricul">
+      🗑️
+     </button>
+    </div>
+    <div class="search-history-items" id="searchHistoryItems">
+    </div>
+   </div>
+   <div class="search-container">
+    <div class="search-wrapper">
+     <input class="search-input" id="buttonsSearch" placeholder="Caută butoane permanente" type="text" />
+     <button class="clear-search" id="clearSearch">
+      ✕
+     </button>
+     <span class="search-icon">
+      <svg height="20" viewbox="0 0 24 24" width="20" xmlns="http://www.w3.org/2000/svg">
+       <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z">
+       </path>
+      </svg>
+     </span>
+    </div>
+   </div>
+   <div class="site-add-container">
+    <div class="toggle-container">
+     <div class="toggle-add-site" id="toggleAddBtn">
+     </div>
+     <span class="toggle-label" id="toggleLabel">
+      Deschide
+     </span>
+    </div>
+    <div class="add-site" id="addSiteForm">
+     <h3>
+      Adaugă site
+     </h3>
+     <input id="siteName" placeholder="Nume site" type="text"/>
+     <input id="siteURL" placeholder="URL (ex: https://exemplu.com)" type="text"/>
+     <input id="siteImg" placeholder="URL imagine (opțional)" type="text"/>
+     <button id="addSiteBtn" onclick="addSite()">
+      Adaugă
+     </button>
+    </div>
+   </div>
+   <div class="permanent-buttons" id="permanentButtons">
+    <a class="permanent-button" data-category="email" href="https://mail.yahoo.com/d/folders/1" id="yahooButton_1" target="_blank">
+     <img alt="Yahoo" src="https://www.google.com/s2/favicons?sz=64&amp;domain=yahoo.com"/>
+     <span>
+      Yahoo
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://clicksud.biz/home7/https://clicksud.biz/home7/" id="clicksudButton_2" target="_blank">
+     <img alt="ClickSud" src="https://www.google.com/s2/favicons?sz=64&amp;domain=clicksud.org"/>
+     <span>
+      clicksud
+     </span>
+    </a>
+    <a class="site-button" data-category="fisiere" href="https://filelist.io/login.php?returnto=%2F" id="filelistButton_3" target="_blank">
+     <img alt="FileList" src="https://www.google.com/s2/favicons?sz=64&amp;domain=filelist.io"/>
+     <span>
+      filelist
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www1.divxfilmeonline.net/filme-online-subtitrate-1/" id="divxButton_4" target="_blank">
+     <img alt="DivX Filme Online" src="https://www.google.com/s2/favicons?sz=64&amp;domain=divxfilmeonline.org"/>
+     <span>
+      divxfilmeonline
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.imdb.com/watchlist" id="imdbButton_5" target="_blank">
+     <img alt="IMDB" src="https://www.google.com/s2/favicons?sz=64&amp;domain=imdb.com"/>
+     <span>
+      imdb
+     </span>
+    </a>
+    <a class="site-button" data-category="ai" href="https://deepai.org/" id="DeepAIButton_6" target="_blank">
+     <img alt="DeepAI" src="https://www.google.com/s2/favicons?sz=64&amp;domain=netflix.com"/>
+     <span>
+      DeepAI
+     </span>
+    </a>
+    <a class="site-button" data-category="electronics" href="https://www.arduino.cc" id="arduinoButton_7" target="_blank">
+     <img alt="Arduino" src="https://www.google.com/s2/favicons?sz=64&amp;domain=arduino.cc"/>
+     <span>
+      Arduino
+     </span>
+    </a>
+    <a class="site-button" data-category="ai" href="https://openai.com" id="openaiButton_8" target="_blank">
+     <img alt="OpenAI" src="https://www.google.com/s2/favicons?sz=64&amp;domain=openai.com"/>
+     <span>
+      OpenAI
+     </span>
+    </a>
+    <a class="site-button" data-category="electronics" href="https://blynk.io" id="blynkButton_9" target="_blank">
+     <img alt="Blynk" src="https://www.google.com/s2/favicons?sz=64&amp;domain=blynk.io"/>
+     <span>
+      Blynk
+     </span>
+    </a>
+    <a class="site-button" data-category="development" href="https://appinventor.mit.edu" id="appinventorButton_10" target="_blank">
+     <img alt="App Inventor" src="https://www.google.com/s2/favicons?sz=64&amp;domain=appinventor.mit.edu"/>
+     <span>
+      App Inventor
+     </span>
+    </a>
+    <a class="site-button" data-category="development" href="https://github.com" id="githubButton_11" target="_blank">
+     <img alt="GitHub" src="https://www.google.com/s2/favicons?sz=64&amp;domain=github.com"/>
+     <span>
+      GitHub
+     </span>
+    </a>
+    <a class="site-button" data-category="email" href="https://mail.google.com" id="gmailButton_12" target="_blank">
+     <img alt="Gmail" onerror="this.src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAA0UlEQVQ4jcWTPQ6CQBCF35rYSmKoVqPGUu9gwb13wBPYyRG8gXdQT6CFrbGkwWBPsV1DQmQ2ERMrJ/my+5L55gfgh1SwHOCUfEeuXVUBJFUHkVPAcY5dV0mzh6Q+hJA/mBrAaGK+hYBdEJAkvbP/k26q5nybZQP7IJi1OqbNKwv0HppkA9tZRRIb0YcvbbdZVjsADFP8J5XK4XleXqzX1wVbXUmSZBPHuLZs4XcaPZSm7TZJYoQQRFJlAHK/OzUCOHVdVv9jQ631Vmt91vqjSfq2t/8XD8UTsPg7EiglAAAAAElFTkSuQmCC';" src="https://www.gstatic.com/images/branding/product/2x/gmail_2020q4_32dp.png"/>
+     <span>
+      Gmail
+     </span>
+    </a>
+    <a class="site-button" data-category="electronics" href="https://www.adafruit.com" id="adafruitButton_13" target="_blank">
+     <img alt="Adafruit" src="https://www.google.com/s2/favicons?sz=64&amp;domain=adafruit.com"/>
+     <span>
+      Adafruit
+     </span>
+    </a>
+    <a class="site-button" data-category="storage" href="https://www.dropbox.com" id="dropboxButton_14" target="_blank">
+     <img alt="Dropbox" src="https://www.google.com/s2/favicons?sz=64&amp;domain=dropbox.com"/>
+     <span>
+      Dropbox
+     </span>
+    </a>
+    <a class="site-button" data-category="development" href="https://www.kodular.io" id="kodularButton_15" target="_blank">
+     <img alt="Kodular" src="https://www.google.com/s2/favicons?sz=64&amp;domain=kodular.io"/>
+     <span>
+      Kodular
+     </span>
+    </a>
+    <a class="site-button" data-category="development" href="https://makewithtech.com" id="makewithtecButton_16" target="_blank">
+     <img alt="MakeWithTec" src="https://www.google.com/s2/favicons?sz=64&amp;domain=makewithtec.com"/>
+     <span>
+      MakeWithTec
+     </span>
+     <https: alt="MakeWithTec" assets="" makewithtech900--eboqu1u.png="" models.makewithtech.com="">
+     </https:>
+    </a>
+    <a class="site-button" data-category="tech" href="https://www.microsoft.com" id="microsoftButton_17" target="_blank">
+     <img alt="Microsoft" src="https://www.google.com/s2/favicons?sz=64&amp;domain=microsoft.com"/>
+     <span>
+      Microsoft
+     </span>
+    </a>
+    <a class="site-button" data-category="ai" href="https://deepseek.ai" id="deepseekButton_18" target="_blank">
+     <img alt="DeepSeek" src="https://www.google.com/s2/favicons?sz=64&amp;domain=deepseek.ai"/>
+     <span>
+      DeepSeek
+     </span>
+    </a>
+    <a class="site-button" data-category="ai" href="https://gemini.google.com" id="geminiaiButton_19" target="_blank">
+     <img alt="Gemini AI" src="https://www.google.com/s2/favicons?sz=64&amp;domain=gemini.google.com"/>
+     <span>
+      Gemini AI
+     </span>
+    </a>
+    <a class="site-button" data-category="tech" href="https://www.teamviewer.com" id="teamviewerButton_20" target="_blank">
+     <img alt="TeamViewer" src="https://www.google.com/s2/favicons?sz=64&amp;domain=teamviewer.com"/>
+     <span>
+      TeamViewer
+     </span>
+    </a>
+    <a class="site-button" data-category="audio" href="https://elevenlabs.io" id="elevenlabsButton_21" target="_blank">
+     <img alt="ElevenLabs" src="https://www.google.com/s2/favicons?sz=64&amp;domain=elevenlabs.io"/>
+     <span>
+      ElevenLabs
+     </span>
+    </a>
+    <a class="site-button" data-category="shopping" href="https://www.ebay.co.uk" id="ebayukButton_22" target="_blank">
+     <img alt="eBay UK" src="https://www.google.com/s2/favicons?sz=64&amp;domain=ebay.co.uk"/>
+     <span>
+      eBay UK
+     </span>
+    </a>
+    <a class="site-button" data-category="shopping" href="https://www.aliexpress.com" id="aliexpressButton_23" target="_blank">
+     <img alt="AliExpress" src="https://www.google.com/s2/favicons?sz=64&amp;domain=aliexpress.com"/>
+     <span>
+      AliExpress
+     </span>
+    </a>
+    <a class="site-button" data-category="services" href="https://www.fiverr.com" id="fiverrButton_24" target="_blank">
+     <img alt="Fiverr" src="https://www.google.com/s2/favicons?sz=64&amp;domain=fiverr.com"/>
+     <span>
+      Fiverr
+     </span>
+    </a>
+    <a class="site-button" data-category="services" href="https://www.lebara.com" id="lebaraButton_25" target="_blank">
+     <img alt="Lebara" src="https://www.google.com/s2/favicons?sz=64&amp;domain=lebara.com"/>
+     <span>
+      Lebara
+     </span>
+    </a>
+    <a class="site-button" data-category="finance" href="https://www.paypal.com" id="paypalButton_26" target="_blank">
+     <img alt="PayPal" src="https://www.google.com/s2/favicons?sz=64&amp;domain=paypal.com"/>
+     <span>
+      PayPal
+     </span>
+    </a>
+    <a class="site-button" data-category="finance" href="https://www.telford.gov.uk/info/20110/council_tax" id="counciltaxtelfordButton_27" target="_blank">
+     <img alt="Council Tax Telford" src="https://www.google.com/s2/favicons?sz=64&amp;domain=telford.gov.uk"/>
+     <span>
+      Council Tax Telford
+     </span>
+    </a>
+    <a class="site-button" data-category="services" href="https://octopus.energy" id="octopusenergyButton_28" target="_blank">
+     <img alt="Octopus Energy" src="https://www.google.com/s2/favicons?sz=64&amp;domain=octopus.energy"/>
+     <span>
+      Octopus Energy
+     </span>
+    </a>
+    <a class="site-button" data-category="finance" href="https://www.standardlife.co.uk" id="standardlifeButton_29" target="_blank">
+     <img alt="Standard Life" src="https://www.google.com/s2/favicons?sz=64&amp;domain=standardlife.co.uk"/>
+     <span>
+      Standard Life
+     </span>
+    </a>
+    <a class="site-button" data-category="services" href="https://www.virginmedia.com" id="virginmediaButton_30" target="_blank">
+     <img alt="Virgin Media" src="https://www.google.com/s2/favicons?sz=64&amp;domain=virginmedia.com"/>
+     <span>
+      Virgin Media
+     </span>
+    </a>
+    <a class="site-button" data-category="gov" href="https://www.gov.uk/universal-credit" id="universalcreditukButton_31" target="_blank">
+     <img alt="Universal Credit UK" src="https://www.google.com/s2/favicons?sz=64&amp;domain=gov.uk"/>
+     <span>
+      Universal Credit UK
+     </span>
+    </a>
+    <a class="site-button" data-category="translation" href="https://www.deepl.com" id="deeplButton_32" target="_blank">
+     <img alt="DeepL" src="https://www.google.com/s2/favicons?sz=64&amp;domain=deepl.com"/>
+     <span>
+      DeepL
+     </span>
+    </a>
+    <a class="site-button" data-category="security" href="https://surfshark.com" id="surfsharkButton_33" target="_blank">
+     <img alt="Surfshark" src="https://www.google.com/s2/favicons?sz=64&amp;domain=surfshark.com"/>
+     <span>
+      Surfshark
+     </span>
+    </a>
+    <a class="site-button" data-category="security" href="https://www.totalav.com" id="totalavButton_34" target="_blank">
+     <img alt="TotalAV" src="https://www.google.com/s2/favicons?sz=64&amp;domain=totalav.com"/>
+     <span>
+      TotalAV
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="https://www.quillbot.com" id="quillbotButton_35" target="_blank">
+     <img alt="QuillBot" src="https://www.google.com/s2/favicons?sz=64&amp;domain=quillbot.com"/>
+     <span>
+      QuillBot
+     </span>
+    </a>
+    <a class="site-button" data-category="finance" href="https://www.trading212.com" id="trading212Button_36" target="_blank">
+     <img alt="Trading212" src="https://www.google.com/s2/favicons?sz=64&amp;domain=trading212.com"/>
+     <span>
+      Trading212
+     </span>
+    </a>
+    <a class="site-button" data-category="finance" href="https://www.etoro.com" id="etoroButton_37" target="_blank">
+     <img alt="eToro" src="https://www.google.com/s2/favicons?sz=64&amp;domain=etoro.com"/>
+     <span>
+      eToro
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://filmehd.se/wp-json" id="filmehdAPIButton_38" target="_blank">
+     <img alt="FilmeHD API" src="https://www.google.com/s2/favicons?sz=64&amp;domain=filmehd.se"/>
+     <span>
+      FilmeHD API
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://voxfilmeonline.biz/" id="voxFilmeButton_39" target="_blank">
+     <img alt="Vox Filme" src="https://www.google.com/s2/favicons?sz=64&amp;domain=voxfilmeonline.biz"/>
+     <span>
+      Vox Filme
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.justwatch.com/ro/filme" id="justWatchFilmeButton_40" target="_blank">
+     <img alt="JustWatch" src="https://www.google.com/s2/favicons?sz=64&amp;domain=justwatch.com"/>
+     <span>
+      JustWatch
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://portalultautv.biz/" id="portalulTVButton_41" target="_blank">
+     <img alt="Portalul TV" src="https://www.google.com/s2/favicons?sz=64&amp;domain=portalultautv.biz"/>
+     <span>
+      Portalul TV
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.topfilmehd.ro/" id="topFilmeHDButton_42" target="_blank">
+     <img alt="Top Filme" src="https://www.google.com/s2/favicons?sz=64&amp;domain=topfilmehd.ro"/>
+     <span>
+      Top Filme
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://cinepub.ro/" id="cinepubFilmeButton_43" target="_blank">
+     <img alt="Cinepub" src="https://www.google.com/s2/favicons?sz=64&amp;domain=cinepub.ro"/>
+     <span>
+      Cinepub
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://pluto.tv/uk/hub/home?lang=en" id="plutoTVButton_44" target="_blank">
+     <img alt="Pluto TV" src="https://www.google.com/s2/favicons?sz=64&amp;domain=pluto.tv"/>
+     <span>
+      Pluto TV
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://despre-seriale.net/" id="despreSerialeButton_45" target="_blank">
+     <img alt="Despre Seriale" src="https://www.google.com/s2/favicons?sz=64&amp;domain=despre-seriale.net"/>
+     <span>
+      Despre Seriale
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://voyo.ro/" id="voyoButton_46" target="_blank">
+     <img alt="Voyo" src="https://www.google.com/s2/favicons?sz=64&amp;domain=voyo.ro"/>
+     <span>
+      Voyo
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://filmflix.ro/" id="filmflixButton_47" target="_blank">
+     <img alt="Filmflix" src="https://www.google.com/s2/favicons?sz=64&amp;domain=filmflix.ro"/>
+     <span>
+      Filmflix
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://tubitv.com/" id="tubiButton_48" target="_blank">
+     <img alt="Tubi" src="https://www.google.com/s2/favicons?sz=64&amp;domain=tubitv.com"/>
+     <span>
+      Tubi
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://123moviesonl.net/" id="movies123Button_49" target="_blank">
+     <img alt="123MoviesOnl" src="https://www.google.com/s2/favicons?sz=64&amp;domain=123moviesonl.net"/>
+     <span>
+      123MoviesOnl
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.crackle.com/" id="crackleButton_50" target="_blank">
+     <img alt="Crackle" src="https://www.google.com/s2/favicons?sz=64&amp;domain=crackle.com"/>
+     <span>
+      Crackle
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.roku.com/en-gb/" id="rokuButton_51" target="_blank">
+     <img alt="Roku" src="https://www.google.com/s2/favicons?sz=64&amp;domain=roku.com"/>
+     <span>
+      Roku
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://filmzie.com/home" id="filmzieButton_52" target="_blank">
+     <img alt="Filmzie" src="https://www.google.com/s2/favicons?sz=64&amp;domain=filmzie.com"/>
+     <span>
+      Filmzie
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.yidio.com/" id="yidioButton_53" target="_blank">
+     <img alt="Yidio" src="https://www.google.com/s2/favicons?sz=64&amp;domain=yidio.com"/>
+     <span>
+      Yidio
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://fawesome.tv/home/" id="fawesomeButton_54" target="_blank">
+     <img alt="Fawesome" src="https://www.google.com/s2/favicons?sz=64&amp;domain=fawesome.tv"/>
+     <span>
+      Fawesome
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.contv.com/" id="contvButton_55" target="_blank">
+     <img alt="CONtv" src="https://www.google.com/s2/favicons?sz=64&amp;domain=contv.com"/>
+     <span>
+      CONtv
+     </span>
+    </a>
+    <a class="site-button" data-category="filme" href="https://www.cineby.app/browse/movie" id="cinebyButton_56" target="_blank">
+     <img alt="Cineby" src="https://www.google.com/s2/favicons?sz=64&amp;domain=cineby.app"/>
+     <span>
+      Cineby
+     </span>
+    </a>
+    <a class="permanent-button" data-category="video" href="https://www.youtube.com" id="youtubeButton_57" target="_blank">
+     <img alt="YouTube" src="https://www.google.com/s2/favicons?sz=64&amp;domain=youtube.com"/>
+     <span>
+      YouTube
+     </span>
+    </a>
+    <a class="permanent-button" data-category="social" href="https://www.facebook.com" id="facebookButton_58" target="_blank">
+     <img alt="Facebook" src="https://www.google.com/s2/favicons?sz=64&amp;domain=facebook.com"/>
+     <span>
+      Facebook
+     </span>
+    </a>
+    <a class="permanent-button" data-category="shopping" href="https://www.ebay.com" id="ebayButton_59" target="_blank">
+     <img alt="eBay" src="https://www.google.com/s2/favicons?sz=64&amp;domain=ebay.com"/>
+     <span>
+      eBay
+     </span>
+    </a>
+    <a class="site-button" data-category="translation" href="https://aws.amazon.com/translate/" id="amazonTranslateButton_60" target="_blank">
+     <img alt="Amazon Translate" src="https://www.google.com/s2/favicons?sz=64&amp;domain=aws.amazon.com"/>
+     <span>
+      Amazon Translate
+     </span>
+    </a>
+    <a class="site-button" data-category="translation" href="https://www.smartcat.com/" id="smartcatButton_61" target="_blank">
+     <img alt="Smartcat" src="https://www.google.com/s2/favicons?sz=64&amp;domain=smartcat.com"/>
+     <span>
+      Smartcat
+     </span>
+    </a>
+    <a class="site-button" data-category="translation" href="https://www.bing.com/translator" id="bingTranslatorButton_62" target="_blank">
+     <img alt="Bing Translator" src="https://www.google.com/s2/favicons?sz=64&amp;domain=bing.com"/>
+     <span>
+      Bing Translator
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="https://www.grammarly.com/" id="grammarlyButton_63" target="_blank">
+     <img alt="Grammarly" src="https://www.google.com/s2/favicons?sz=64&amp;domain=grammarly.com"/>
+     <span>
+      Grammarly
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="https://www.gingersoftware.com/" id="gingerButton_64" target="_blank">
+     <img alt="Ginger" src="https://www.google.com/s2/favicons?sz=64&amp;domain=gingersoftware.com"/>
+     <span>
+      Ginger
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="http://www.hemingwayapp.com/" id="hemingwayButton_65" target="_blank">
+     <img alt="Hemingway" src="https://www.google.com/s2/favicons?sz=64&amp;domain=hemingwayapp.com"/>
+     <span>
+      Hemingway
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="https://www.grammarcheck.net/" id="grammarCheckButton_66" target="_blank">
+     <img alt="GrammarCheck" src="https://www.google.com/s2/favicons?sz=64&amp;domain=grammarcheck.net"/>
+     <span>
+      GrammarCheck
+     </span>
+    </a>
+    <a class="site-button" data-category="writing" href="https://www.scribbr.com/" id="scribbrButton_67" target="_blank">
+     <img alt="Scribbr" src="https://www.google.com/s2/favicons?sz=64&amp;domain=scribbr.com"/>
+     <span>
+      Scribbr
+     </span>
+    </a>
+   </div>
+   <div class="sites-container" id="sitesContainer">
+   </div>
+  </div>
+  <audio id="clickSound" preload="auto">
+  </audio>
+  <audio id="addSound" preload="auto">
+  </audio>
+  <audio id="deleteSound" preload="auto">
+  </audio>
+  <script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   document.addEventListener('DOMContentLoaded', function() {
+  // Get the search input element
+  const searchInput = document.getElementById('buttonsSearch');
+  
+  // Get the clear button
+  const clearButton = document.getElementById('clearSearch');
+  
+  // Get all elements with data-category attribute
+  const categorizedLinks = document.querySelectorAll('[data-category]');
+  
+  // Extract all unique categories for potential category filter buttons
+  const uniqueCategories = new Set();
+  categorizedLinks.forEach(link => {
+    uniqueCategories.add(link.getAttribute('data-category'));
+  });
+  
+  // Function to filter elements based on search term
+  function filterElements() {
+    const searchTerm = searchInput.value.toLowerCase();
+    
+    categorizedLinks.forEach(link => {
+      const category = link.getAttribute('data-category').toLowerCase();
+      const buttonText = link.querySelector('span').textContent.toLowerCase();
+      
+      // Show the link if:
+      // 1. The category contains the search term OR
+      // 2. The button text contains the search term OR
+      // 3. Search term is empty (show all)
+      if (searchTerm === '' || 
+          category.includes(searchTerm) || 
+          buttonText.includes(searchTerm)) {
+        link.style.display = '';
+      } else {
+        link.style.display = 'none';
+      }
+    });
+  }
+  
+  // Function to filter by a specific category
+  function filterByCategory(categoryName) {
+    // Clear the search input first
+    searchInput.value = '';
+    
+    categorizedLinks.forEach(link => {
+      const category = link.getAttribute('data-category');
+      
+      if (categoryName === 'all' || category === categoryName) {
+        link.style.display = '';
+      } else {
+        link.style.display = 'none';
+      }
+    });
+  }
+  
+  // Add event listener for input changes
+  searchInput.addEventListener('input', filterElements);
+  
+  // Add event listener for the clear button
+  clearButton.addEventListener('click', function() {
+    searchInput.value = '';
+    // Show all elements again
+    categorizedLinks.forEach(link => {
+      link.style.display = '';
+    });
+  });
+  
+  // Optional: Create category filter buttons
+  const categoryButtonsContainer = document.createElement('div');
+  categoryButtonsContainer.className = 'category-buttons';
+  
+  // Add "All" button first
+  const allButton = document.createElement('button');
+  allButton.textContent = 'All';
+  allButton.className = 'category-button active';
+  allButton.addEventListener('click', function() {
+    document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+    this.classList.add('active');
+    filterByCategory('all');
+  });
+  categoryButtonsContainer.appendChild(allButton);
+  
+  // Add a button for each category
+  uniqueCategories.forEach(category => {
+    const button = document.createElement('button');
+    button.textContent = category.charAt(0).toUpperCase() + category.slice(1); // Capitalize first letter
+    button.className = 'category-button';
+    button.addEventListener('click', function() {
+      document.querySelectorAll('.category-button').forEach(btn => btn.classList.remove('active'));
+      this.classList.add('active');
+      filterByCategory(category);
+    });
+    categoryButtonsContainer.appendChild(button);
+  });
+  
+  // Insert the category buttons before the search container
+  const searchContainer = document.querySelector('.search-container');
+  searchContainer.parentNode.insertBefore(categoryButtonsContainer, searchContainer);
+  
+  // Add styles for category buttons
+  const styleElement = document.createElement('style');
+  styleElement.textContent = `
+    /* Container for all category buttons */
+    .category-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 24px 0;
+      padding: 20px;
+      background-color: #000000;
+      border-radius: 15px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+      justify-content: center;
+    }
+    
+    /* Base styling for category buttons */
+    .category-button {
+      padding: 18px 28px;
+      border: none;
+      border-radius: 35px;
+      background-color: #ffffff;
+      color: #000000;
+      font-weight: 800;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      box-shadow: 0 6px 0 var(--category-color, #6c757d), 0 8px 16px rgba(0,0,0,0.2);
+      min-width: 180px;
+      text-align: center;
+      margin-bottom: 15px;
+      border-left: 8px solid var(--category-color, #6c757d);
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+    
+    /* Hover effect */
+    .category-button:hover {
+      background-color: #f8f9fa;
+      transform: translateY(-6px);
+      box-shadow: 0 12px 0 var(--category-color, #6c757d), 0 12px 20px rgba(0,0,0,0.25);
+    }
+    
+    /* Press effect */
+    .category-button:active {
+      transform: translateY(4px);
+      box-shadow: 0 2px 0 var(--category-color, #6c757d), 0 4px 8px rgba(0,0,0,0.15);
+      background-color: var(--category-color, #e9ecef);
+      color: white;
+      transition: all 0.1s ease;
+    }
+    
+    /* Active (selected) state */
+    .category-button.active {
+      background-color: var(--category-color, #4361ee);
+      color: white;
+      box-shadow: 0 6px 0 rgba(0,0,0,0.3), 0 8px 16px rgba(0,0,0,0.3);
+      transform: translateY(-2px);
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    /* Category color indicator */
+    .category-button[data-category]:before {
+      content: '';
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      margin-right: 12px;
+      background-color: var(--category-color, #6c757d);
+      vertical-align: middle;
+      box-shadow: 0 0 0 3px rgba(255,255,255,0.8), 0 0 8px rgba(0,0,0,0.4);
+    }
+    
+    /* Extremely vibrant colors for categories */
+    .category-button[data-category="filme"] {
+      --category-color: #ff0055;
+    }
+    
+    .category-button[data-category="email"] {
+      --category-color: #00ccff;
+    }
+    
+    .category-button[data-category="ai"] {
+      --category-color: #aa00ff;
+    }
+    
+    .category-button[data-category="development"] {
+      --category-color: #00ff66;
+    }
+    
+    .category-button[data-category="electronics"] {
+      --category-color: #ffcc00;
+    }
+    
+    .category-button[data-category="finance"] {
+      --category-color: #0066ff;
+    }
+    
+    .category-button[data-category="shopping"] {
+      --category-color: #ff3399;
+    }
+
+    .category-button[data-category="tech"] {
+      --category-color: #00e5ff;
+    }
+
+    .category-button[data-category="fisiere"] {
+      --category-color: #00ff99;
+    }
+
+    .category-button[data-category="video"] {
+      --category-color: #ff3d00;
+    }
+
+    .category-button[data-category="social"] {
+      --category-color: #2979ff;
+    }
+
+    .category-button[data-category="storage"] {
+      --category-color: #d500f9;
+    }
+
+    .category-button[data-category="translation"] {
+      --category-color: #00bfa5;
+    }
+
+    .category-button[data-category="writing"] {
+      --category-color: #ff9100;
+    }
+
+    .category-button[data-category="security"] {
+      --category-color: #304ffe;
+    }
+
+    .category-button[data-category="services"] {
+      --category-color: #aa00ff;
+    }
+
+    .category-button[data-category="gov"] {
+      --category-color: #00bfa5;
+    }
+
+    .category-button[data-category="audio"] {
+      --category-color: #ff4081;
+    }
+    
+    /* Special styling for "All" button */
+    .category-button:first-child {
+      background: linear-gradient(45deg, #3d5afe, #00e5ff);
+      color: white;
+      font-weight: 800;
+      letter-spacing: 2px;
+      border-left: none;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.5);
+    }
+    
+    .category-button:first-child.active {
+      background: linear-gradient(45deg, #1a237e, #006064);
+      box-shadow: 0 6px 0 #000a12, 0 8px 16px rgba(0,0,0,0.4);
+    }
+    
+    /* Mobile responsive design */
+    @media (max-width: 768px) {
+      .category-buttons {
+        padding: 18px;
+        gap: 15px;
+        margin: 15px 0;
+      }
+      
+      .category-button {
+        padding: 18px 24px;
+        font-size: 24px;
+        min-width: 100%;
+        margin-bottom: 20px;
+        flex-grow: 1;
+        letter-spacing: 1px;
+        border-width: 10px;
+      }
+      
+      .category-button:before {
+        width: 24px;
+        height: 24px;
+        margin-right: 15px;
+      }
+    }
+    
+    /* For very small screens */
+    @media (max-width: 480px) {
+      .category-button {
+        font-size: 22px;
+        padding: 22px 20px;
+        width: 100%;
+        max-width: 100%;
+        font-weight: 800;
+        box-shadow: 0 8px 0 var(--category-color, #6c757d), 0 10px 20px rgba(0,0,0,0.2);
+      }
+    }
+  `;
+  document.head.appendChild(styleElement);
+  
+  // Add category colors to buttons
+  document.querySelectorAll('.category-button').forEach(button => {
+    const categoryText = button.textContent.toLowerCase();
+    if (categoryText !== 'all') {
+      button.setAttribute('data-category', categoryText);
+    }
+  });
+});
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Modul pentru istoricul de căutări - cu funcționalitate de afișare după frecvență
+const SearchHistory = {
+  // Cheia pentru localStorage
+  storageKey: 'searchHistory',
+  
+  // Numărul de căutări afișate în interfață (doar pentru afișare implicită)
+  displayLimit: 5,
+  
+  // Flag pentru a indica dacă se afișează toate căutările sau nu
+  showingAll: false,
+  
+  // Flag pentru a indica dacă se sortează după frecvență sau după dată
+  sortByFrequency: true,
+  
+  // Funcție pentru redarea sunetelor - adăugată direct în modul
+  playSound: function(type) {
+    try {
+      // Mapăm tipurile de sunete la fișierele MP3
+      const soundMap = {
+        'click': 'sounds/toggle.mp3',      // cu cale relativă
+        'delete': 'sounds/toggle.mp3',    // folosim toggle pentru delete
+        'toggle': 'sounds/toggle.mp3'     // cu cale relativă
+      };
+      
+      // Obținem calea fișierului MP3
+      const soundFile = soundMap[type] || 'click.mp3';
+      
+      // Creăm și redăm sunetul
+      const audio = new Audio(soundFile);
+      audio.volume = 0.8; // Volumul poate fi ajustat aici
+      audio.play().catch(e => console.log("Eroare la redarea sunetului:", e));
+    } catch (error) {
+      console.error("Eroare la redarea sunetului:", error);
+    }
+  },
+  
+  // Inițializare
+  init: function() {
+    const searchForm = document.getElementById('searchForm');
+    const searchInput = document.getElementById('searchInput');
+    const historyContainer = document.getElementById('searchHistoryItems');
+    const clearHistoryBtn = document.querySelector('.search-history-clear');
+    
+    if (!searchForm || !searchInput || !historyContainer) {
+      console.error('Elementele pentru istoricul de căutări nu au fost găsite.');
+      return;
+    }
+    
+    console.log("Inițializare modul istoric căutări");
+    console.log("Date existente:", this.getSearchData());
+    
+    // Încarcă istoricul la pornire
+    this.loadHistory();
+    
+    // Adaugă eveniment pentru formularul de căutare - DOAR ACEASTĂ VERSIUNE
+    searchForm.addEventListener('submit', (e) => {
+      const query = searchInput ? searchInput.value.trim() : '';
+      console.log("Căutare trimisă:", query, "Tip:", typeof query);
+      
+      if (query && typeof query === 'string' && query.length > 0) {
+        this.addSearch(query);
+        console.log("Căutare adăugată la istoric:", query);
+      } else {
+        console.error("Căutare invalidă:", query);
+      }
+    });
+    
+    // Adaugă eveniment pentru butonul de ștergere a istoricului
+    if (clearHistoryBtn) {
+      clearHistoryBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        this.clearHistory();
+        // Redă sunet de ștergere
+        this.playSound('delete');
+      });
+      
+      // Adaugă eveniment de click-dreapta pentru a schimba sortarea
+      clearHistoryBtn.addEventListener('contextmenu', (e) => {
+        e.preventDefault();
+        this.toggleSortMode();
+        // Redă sunet
+        this.playSound('toggle');
+      });
+    }
+    
+    // Delegare de eveniment pentru elementele individuale din istoric și pentru butonul "mai multe"
+    historyContainer.addEventListener('click', (e) => {
+      const item = e.target.closest('.search-history-item');
+      const moreButton = e.target.closest('.search-history-more');
+      const sortToggle = e.target.closest('.search-sort-toggle');
+      
+      // Gestionare click pe un element din istoric
+      if (item && !e.target.closest('.search-history-delete')) {
+        // Prevenim temporar trimiterea formularului
+        e.preventDefault();
+        
+        // Caută termenul și incrementează contorul
+        const query = item.dataset.query;
+        searchInput.value = query;
+        this.addSearch(query, true); // Incrementează contorul fără a muta pe prima poziție
+        
+        // Redă sunetul și așteaptă un scurt timp
+        this.playSound('click');
+        
+        // Trimitem formularul după un scurt delay
+        setTimeout(() => {
+          searchForm.submit();
+        },400); // 400ms ar trebui să fie suficient pentru a începe redarea sunetului
+      }
+      
+      // Gestionare click pe butonul "mai multe"
+      if (moreButton) {
+        e.preventDefault();
+        this.toggleShowAll();
+        // Redă sunet de click
+        this.playSound('click');
+      }
+      
+      // Gestionare click pe butonul de schimbare a sortării
+      if (sortToggle) {
+        e.preventDefault();
+        this.toggleSortMode();
+        // Redă sunet
+        this.playSound('toggle');
+      }
+    });
+    
+    // Observator pentru mutații DOM pentru a adăuga butoane la elementele adăugate dinamic
+    const observer = new MutationObserver(() => {
+      this.addDeleteButtons();
+    });
+    
+    // Observăm containerul cu istoricul pentru modificări
+    if (historyContainer) {
+      observer.observe(historyContainer, { childList: true, subtree: true });
+    }
+  },
+  
+  // Comută între afișarea limitată și afișarea tuturor căutărilor
+  toggleShowAll: function() {
+    this.showingAll = !this.showingAll;
+    this.loadHistory();
+  },
+  
+  // Comută între sortarea după frecvență și după dată
+  toggleSortMode: function() {
+    this.sortByFrequency = !this.sortByFrequency;
+    this.loadHistory();
+  },
+  
+  // Adăugare butoane de ștergere pentru toate elementele din istoric
+  addDeleteButtons: function() {
+    // Selectăm toate elementele din istoric
+    const historyItems = document.querySelectorAll('.search-history-item');
+    
+    // Pentru fiecare element adăugăm butonul de ștergere dacă nu există deja
+    historyItems.forEach(item => {
+      // Verificăm dacă butonul există deja
+      if (!item.querySelector('.search-history-delete')) {
+        // Creăm butonul de ștergere
+        const deleteButton = document.createElement('span');
+        deleteButton.className = 'search-history-delete';
+        deleteButton.textContent = '×';
+        
+        // Adăugăm evenimentul de click pe butonul de ștergere
+        deleteButton.addEventListener('click', (event) => {
+          // Împiedicăm propagarea evenimentului către elementul părinte
+          event.stopPropagation();
+          
+          // Obținem query-ul elementului pentru ștergere
+          const query = item.dataset.query;
+          
+          // Utilizăm metoda existentă pentru ștergerea din istoric
+          this.removeSearch(query);
+          
+          // Redă sunet de ștergere
+          this.playSound('delete');
+        });
+        
+        // Adăugăm butonul la elementul de istoric
+        item.appendChild(deleteButton);
+      }
+    });
+  },
+  
+  // Încarcă istoricul din localStorage
+  loadHistory: function() {
+    const historyContainer = document.getElementById('searchHistoryItems');
+    if (!historyContainer) return;
+    
+    // Obține istoricul de căutări
+    let searchData = this.getSearchData();
+    
+    // Filtrăm datele pentru a elimina orice intrări invalide
+    searchData = searchData.filter(item => 
+      item && typeof item === 'object' && item.query && typeof item.query === 'string'
+    );
+    
+    // Golește containerul
+    historyContainer.innerHTML = '';
+    
+    if (searchData.length === 0) {
+      // Afișează mesaj când nu există istoric
+      const emptyMessage = document.createElement('div');
+      emptyMessage.className = 'search-history-empty';
+      emptyMessage.textContent = 'Nu există căutări recente';
+      historyContainer.appendChild(emptyMessage);
+      return;
+    }
+    
+    // Sortează datele în funcție de modul selectat
+    if (this.sortByFrequency) {
+      // Sortare după frecvență (descrescător) și apoi după timestamp (descrescător)
+      searchData.sort((a, b) => {
+        if (b.count !== a.count) {
+          return b.count - a.count;
+        }
+        return b.lastUsed - a.lastUsed;
+      });
+    } else {
+      // Sortare după timestamp (descrescător)
+      searchData.sort((a, b) => b.lastUsed - a.lastUsed);
+    }
+    
+    // Adaugă butonul de schimbare a sortării
+    const sortToggle = document.createElement('div');
+    sortToggle.className = 'search-sort-toggle';
+    sortToggle.textContent = this.sortByFrequency ? 'Sortare: Frecvență' : 'Sortare: Recente';
+    sortToggle.title = 'Click pentru a schimba modul de sortare';
+    historyContainer.appendChild(sortToggle);
+    
+    // Determină ce căutări să afișăm: toate sau doar limita
+    const displaySearches = this.showingAll ? searchData : searchData.slice(0, this.displayLimit);
+    
+    // Adaugă elementele din istoric
+    displaySearches.forEach(item => {
+      const searchItem = document.createElement('div');
+      searchItem.className = 'search-history-item';
+      
+      // Adaugă textul căutării
+      const queryText = document.createElement('span');
+      queryText.className = 'query-text';
+      queryText.textContent = item.query;
+      searchItem.appendChild(queryText);
+      
+      // Adaugă contorul de frecvență
+      if (item.count > 1) {
+        const countBadge = document.createElement('span');
+        countBadge.className = 'count-badge';
+        countBadge.textContent = item.count;
+        searchItem.appendChild(countBadge);
+      }
+      
+      searchItem.dataset.query = item.query;
+      searchItem.title = `Caută din nou: ${item.query} (folosit de ${item.count} ori)`;
+      historyContainer.appendChild(searchItem);
+    });
+    
+    // Dacă există mai multe căutări și nu afișăm toate, adaugă butonul "mai multe"
+    if (!this.showingAll && searchData.length > this.displayLimit) {
+      const moreIndicator = document.createElement('div');
+      moreIndicator.className = 'search-history-more';
+      moreIndicator.textContent = `+${searchData.length - this.displayLimit} mai multe`;
+      moreIndicator.title = 'Click pentru a vedea toate căutările';
+      historyContainer.appendChild(moreIndicator);
+    } 
+    // Dacă afișăm toate și sunt mai multe decât limita, adaugă butonul pentru a reveni la afișarea simplă
+    else if (this.showingAll && searchData.length > this.displayLimit) {
+      const lessIndicator = document.createElement('div');
+      lessIndicator.className = 'search-history-more search-history-less';
+      lessIndicator.textContent = 'Afișează mai puține';
+      lessIndicator.title = 'Click pentru a reveni la afișarea simplificată';
+      historyContainer.appendChild(lessIndicator);
+    }
+    
+    // Adăugăm butoanele de ștergere după ce s-au încărcat elementele
+    this.addDeleteButtons();
+  },
+  
+  // Obține istoricul de căutări din localStorage
+  getSearchData: function() {
+    const historyJson = localStorage.getItem(this.storageKey);
+    return historyJson ? JSON.parse(historyJson) : [];
+  },
+  
+  // Adaugă o nouă căutare în istoric sau incrementează contorul pentru o căutare existentă
+  addSearch: function(query, onlyIncrement = false) {
+    // Validare strictă
+    if (!query || typeof query !== 'string' || query.trim() === '') {
+      console.error("Căutare invalidă ignorată:", query);
+      return;
+    }
+    
+    let searchData = this.getSearchData();
+    const now = Date.now();
+    
+    // Verifică dacă căutarea există deja - adăugăm verificări pentru item și item.query
+    const existingIndex = searchData.findIndex(item => 
+      item && item.query && item.query.toLowerCase() === query.toLowerCase()
+    );
+    
+    if (existingIndex !== -1) {
+      // Incrementează contorul și actualizează timestamp-ul
+      searchData[existingIndex].count++;
+      searchData[existingIndex].lastUsed = now;
+      
+      // Dacă onlyIncrement este false, mută căutarea la începutul listei (pentru sortarea după dată)
+      if (!onlyIncrement) {
+        const item = searchData.splice(existingIndex, 1)[0];
+        searchData.unshift(item);
+      }
+    } else {
+      // Adaugă o nouă căutare
+      searchData.unshift({
+        query: query,
+        count: 1,
+        firstUsed: now,
+        lastUsed: now
+      });
+    }
+    
+    // Salvează în localStorage
+    localStorage.setItem(this.storageKey, JSON.stringify(searchData));
+    
+    // Resetează la vizualizarea standard când adăugăm o nouă căutare
+    if (!onlyIncrement) {
+      this.showingAll = false;
+    }
+    
+    // Actualizează afișarea
+    this.loadHistory();
+  },
+  
+  // Elimină o căutare specifică din istoric
+  removeSearch: function(query) {
+    if (!query) return;
+    
+    let searchData = this.getSearchData();
+    searchData = searchData.filter(item => 
+      !item || !item.query || item.query.toLowerCase() !== query.toLowerCase()
+    );
+    
+    // Salvează în localStorage
+    localStorage.setItem(this.storageKey, JSON.stringify(searchData));
+    
+    // Actualizează afișarea
+    this.loadHistory();
+  },
+  
+  // Șterge tot istoricul de căutări
+  clearHistory: function() {
+    localStorage.removeItem(this.storageKey);
+    this.showingAll = false;
+    this.loadHistory();
+  }
+};
+
+// Inițializează modulul de istoric la încărcarea documentului
+document.addEventListener('DOMContentLoaded', function() {
+  SearchHistory.init();
+});
+
+
+
+
+
+
+
+
+  // Funcții pentru sunete de dragging și dropping
+function createDragSounds() {
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Sunete pentru diferite acțiuni de drag & drop
+  const sounds = {
+    // Sunet când începe tragerea butonului
+    dragStart: () => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.value = 800;
+      gainNode.gain.value = 0.1;
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start();
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+      oscillator.stop(audioContext.currentTime + 0.2);
+    },
+    
+    // Sunet când butonul e în mișcare
+    dragMove: () => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'sine';
+      oscillator.frequency.value = 400;
+      gainNode.gain.value = 0.05;
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start();
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.1);
+      oscillator.stop(audioContext.currentTime + 0.1);
+    },
+    
+    // Sunet când butonul e lăsat jos
+    dragEnd: () => {
+      const oscillator = audioContext.createOscillator();
+      const gainNode = audioContext.createGain();
+      
+      oscillator.type = 'square';
+      oscillator.frequency.value = 1200;
+      gainNode.gain.value = 0.1;
+      
+      oscillator.connect(gainNode);
+      gainNode.connect(audioContext.destination);
+      
+      oscillator.start();
+      gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+      oscillator.stop(audioContext.currentTime + 0.3);
+    }
+  };
+  
+  return sounds;
+}
+
+// Un singur event listener pentru DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+  const container = document.getElementById('permanentButtons');
+  const storageKey = 'permanentOrder';
+  let lastMoveTime = 0;
+  const moveThrottle = 100; // milisecunde între sunetele de mișcare
+  
+  // Inițializează sunetele
+  const dragSounds = createDragSounds();
+
+  // Funcție pentru a salva ordinea în localStorage
+ function saveOrder() {
+  const order = Array.from(container.children).map(child => child.id);
+  localStorage.setItem(storageKey, JSON.stringify(order));
+  console.log('Ordine salvată:', order);
+}
+
+  // Funcție pentru a încărca ordinea salvată și reordona elementele
+  function loadOrder() {
+    const savedOrder = localStorage.getItem(storageKey);
+    if (savedOrder) {
+      const order = JSON.parse(savedOrder);
+      console.log('Încărcare ordine:', order);
+      order.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+          container.appendChild(el);
+        }
+      });
+    } else {
+      console.log('Nu există ordine salvată.');
+    }
+  }
+
+  // Încarcă ordinea salvată la pornire
+  loadOrder();
+
+  // Inițializează o singură instanță SortableJS pe container cu sunete
+  new Sortable(container, {
+    animation: 150,
+    ghostClass: 'drag-ghost',
+    onStart: function(evt) {
+      // Redă sunet când începe tragerea
+      dragSounds.dragStart();
+    },
+    onMove: function(evt) {
+      // Redă sunet când butonul se mișcă (cu throttle pentru a nu fi prea multe sunete)
+      const now = Date.now();
+      if (now - lastMoveTime > moveThrottle) {
+        dragSounds.dragMove();
+        lastMoveTime = now;
+      }
+    },
+    onEnd: function(evt) {
+      // Redă sunet când butonul e lăsat jos
+      dragSounds.dragEnd();
+      saveOrder();
+    }
+  });
+});
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+  
+document.addEventListener('DOMContentLoaded', function() {
+  const toggleButton = document.getElementById('toggleAddBtn');
+  const toggleLabel = document.getElementById('toggleLabel');
+  const addSiteForm = document.getElementById('addSiteForm');
+  
+  // Configurează butonul toggle
+  toggleButton.addEventListener('click', function() {
+    this.classList.toggle('active');
+    
+    if (this.classList.contains('active')) {
+      // Când butonul este activ, afișează formularul
+      addSiteForm.classList.add('visible');
+      toggleLabel.textContent = "Închide";
+    } else {
+      // Când butonul este inactiv, ascunde formularul
+      addSiteForm.classList.remove('visible');
+      toggleLabel.textContent = "Deschide";
+      
+      // Opțional: resetează formularul când se închide
+      document.getElementById('siteName').value = '';
+      document.getElementById('siteURL').value = '';
+      document.getElementById('siteImg').value = '';
+    }
+  });
+});
+  
+  
+document.addEventListener('DOMContentLoaded', function() {
+    // Elemente principale
+  
+    const clearButton = document.getElementById('clearSearch');
+    const searchIcon = document.querySelector('.search-icon');
+    let selectedButtonIndex = -1;
+    let visibleButtons = [];
+    let buttonGrid = []; // Structură pentru organizarea butoanelor în rânduri
+    
+    // Funcție simplă pentru redarea sunetelor
+    function playSound(soundType) {
+        // Configurare sunete pentru diferite acțiuni
+        const sounds = {
+            'navigation': './sounds/mixkit-hard-single-key-press-in-a-laptop-2542.wav',  // Pentru săgeți
+            'enter': './sounds/explosion-312361.mp3',           // Pentru Enter/click
+            'delete': './sounds/arcade-bleep-sound-6071.mp3',         // Pentru ștergere
+            'type': './sounds/ecg-machine-beep-gfx-sounds-1-1-00-00.mp3'              // Pentru tastare
+        };
+    
+        try {
+            // Verificăm dacă tipul de sunet există
+            if (sounds[soundType]) {
+                const audio = new Audio(sounds[soundType]);
+                audio.play().catch(e => {
+                    console.log("Eroare la redarea sunetului:", e);
+                });
+            }
+        } catch (e) {
+            console.log("Eroare la redarea sunetului:", e);
+        }
+    }
+    
+    // Mesaj pentru rezultate lipsă
+    const noResultsMessage = document.createElement('div');
+    noResultsMessage.className = 'no-results-message';
+    noResultsMessage.textContent = 'Nu s-au găsit rezultate';
+
+    // Inserare mesaj după container-ul de căutare
+    const searchContainer = document.querySelector('.search-container') || document.querySelector('.buttons-search-container');
+    if (searchContainer) {
+        searchContainer.parentNode.insertBefore(noResultsMessage, searchContainer.nextSibling);
+    }
+
+    // Funcție pentru organizarea butoanelor în grid (matrice)
+    function organizeButtonsInGrid() {
+        const allButtons = document.querySelectorAll('.permanent-button, .site-button');
+        buttonGrid = [];
+        visibleButtons = Array.from(allButtons).filter(btn => btn.style.display !== 'none');
+        
+        // Obținem poziția și dimensiunile fiecărui buton
+        const buttonPositions = visibleButtons.map(button => {
+            const rect = button.getBoundingClientRect();
+            return {
+                button: button,
+                top: rect.top,
+                left: rect.left,
+                bottom: rect.bottom,
+                right: rect.right,
+                centerY: rect.top + rect.height / 2,
+                centerX: rect.left + rect.width / 2
+            };
+        });
+        
+        // Grupăm butoanele pe rânduri bazate pe coordonata Y
+        const rowTolerance = 20; // Toleranță pentru a grupa butoanele pe același rând (în pixeli)
+        let currentRowY = -1000;
+        let currentRow = [];
+        
+        // Sortăm mai întâi după coordonata Y (top)
+        buttonPositions.sort((a, b) => a.top - b.top);
+        
+        buttonPositions.forEach(pos => {
+            // Dacă butonul este pe un rând nou
+            if (Math.abs(pos.top - currentRowY) > rowTolerance) {
+                if (currentRow.length > 0) {
+                    // Sortăm butoanele din rândul curent de la stânga la dreapta
+                    currentRow.sort((a, b) => a.left - b.left);
+                    buttonGrid.push(currentRow.map(p => p.button));
+                }
+                currentRowY = pos.top;
+                currentRow = [pos];
+            } else {
+                currentRow.push(pos);
+            }
+        });
+        
+        // Adăugăm ultimul rând
+        if (currentRow.length > 0) {
+            currentRow.sort((a, b) => a.left - b.left);
+            buttonGrid.push(currentRow.map(p => p.button));
+        }
+        
+        // Actualizăm butoanele vizibile într-un array plat pentru compatibilitate
+        visibleButtons = buttonGrid.flat();
+        
+        // Selectăm primul buton dacă nu există unul selectat
+        if (selectedButtonIndex === -1 && visibleButtons.length > 0) {
+            selectedButtonIndex = 0;
+        }
+    }
+
+    // Funcția principală de filtrare
+    function filterButtons() {
+        const searchTerm = searchInput.value.toLowerCase();
+        const allButtons = document.querySelectorAll('.permanent-button, .site-button');
+        let visibleCount = 0;
+        
+        allButtons.forEach(button => {
+            const textContent = button.querySelector('span')?.textContent || button.textContent;
+            const match = searchTerm === '' || textContent.toLowerCase().includes(searchTerm);
+            
+            if (match) {
+                button.style.display = '';
+                visibleCount++;
+            } else {
+                button.style.display = 'none';
+            }
+        });
+        
+        // Reorganizăm butoanele în grid după filtrare
+        organizeButtonsInGrid();
+        
+        // Verificăm dacă butonul selectat curent este încă vizibil
+        if (selectedButtonIndex >= visibleButtons.length || selectedButtonIndex < 0) {
+            selectedButtonIndex = visibleButtons.length > 0 ? 0 : -1;
+        }
+        
+        updateButtonSelection();
+        noResultsMessage.style.display = (visibleCount === 0 && searchTerm) ? 'block' : 'none';
+        clearButton.style.display = searchTerm ? 'block' : 'none';
+        
+        // Adaugă sunet la tastare când se adaugă caractere
+        if (searchTerm.length > 0) {
+            playSound('type');
+        }
+    }
+
+    // Găsește poziția unui buton în grid (rând și coloană)
+    function findButtonPosition(button) {
+        for (let rowIndex = 0; rowIndex < buttonGrid.length; rowIndex++) {
+            const colIndex = buttonGrid[rowIndex].indexOf(button);
+            if (colIndex !== -1) {
+                return { row: rowIndex, col: colIndex };
+            }
+        }
+        return null;
+    }
+
+    // Obține butonul selectat curent
+    function getSelectedButton() {
+        return selectedButtonIndex >= 0 && selectedButtonIndex < visibleButtons.length 
+            ? visibleButtons[selectedButtonIndex] 
+            : null;
+    }
+
+    // Actualizare aspect buton selectat
+    function updateButtonSelection() {
+        // Mai întâi eliminăm clasa selected de la toate butoanele
+        document.querySelectorAll('.permanent-button.selected, .site-button.selected').forEach(btn => {
+            btn.classList.remove('selected');
+        });
+        
+        // Apoi adăugăm clasa selected doar butonului curent
+        const selectedButton = getSelectedButton();
+        if (selectedButton) {
+            selectedButton.classList.add('selected');
+            
+            // Asigură că butonul selectat este vizibil
+            selectedButton.scrollIntoView({ 
+                behavior: 'smooth', 
+                block: 'nearest',
+                inline: 'center' 
+            });
+        }
+    }
+
+    // Ștergere căutare
+    function handleClearSearch() {
+        searchInput.value = '';
+        searchInput.focus();
+        filterButtons();
+        playSound('delete');
+    }
+
+    // Gestionare tastatură îmbunătățită pentru navigare în grid
+    function handleKeyDown(e) {
+        const allowedKeys = ['ArrowDown', 'ArrowUp', 'ArrowLeft', 'ArrowRight'];
+        
+        if (allowedKeys.includes(e.key) && visibleButtons.length > 0) {
+            e.preventDefault();
+            
+            const selectedButton = getSelectedButton();
+            if (!selectedButton) {
+                selectedButtonIndex = 0;
+                updateButtonSelection();
+                return;
+            }
+            
+            const position = findButtonPosition(selectedButton);
+            if (!position) return;
+            
+            const { row, col } = position;
+            let newRow = row;
+            let newCol = col;
+            
+            switch(e.key) {
+                case 'ArrowDown':
+                    // Navigare în jos (la următorul rând, aceeași coloană dacă există)
+                    if (row < buttonGrid.length - 1) {
+                        newRow = row + 1;
+                        // Asigurăm că nu depășim numărul de coloane din noul rând
+                        newCol = Math.min(col, buttonGrid[newRow].length - 1);
+                    }
+                    break;
+                    
+                case 'ArrowUp':
+                    // Navigare în sus (la rândul anterior, aceeași coloană dacă există)
+                    if (row > 0) {
+                        newRow = row - 1;
+                        // Asigurăm că nu depășim numărul de coloane din noul rând
+                        newCol = Math.min(col, buttonGrid[newRow].length - 1);
+                    }
+                    break;
+                    
+                case 'ArrowRight':
+                    // Navigare la dreapta (același rând, următoarea coloană)
+                    if (col < buttonGrid[row].length - 1) {
+                        newCol = col + 1;
+                    } else if (row < buttonGrid.length - 1) {
+                        // Dacă suntem la capătul rândului, trecem la începutul următorului rând
+                        newRow = row + 1;
+                        newCol = 0;
+                    }
+                    break;
+                    
+                case 'ArrowLeft':
+                    // Navigare la stânga (același rând, coloana anterioară)
+                    if (col > 0) {
+                        newCol = col - 1;
+                    } else if (row > 0) {
+                        // Dacă suntem la începutul rândului, trecem la sfârșitul rândului anterior
+                        newRow = row - 1;
+                        newCol = buttonGrid[newRow].length - 1;
+                    }
+                    break;
+                    
+                case 'Enter':
+                    // Acționează butonul selectat
+                    playSound('enter');
+                    selectedButton.click();
+                    return;
+            }
+            
+            // Actualizăm butonul selectat
+            if (newRow !== row || newCol !== col) {
+                const newButton = buttonGrid[newRow][newCol];
+                selectedButtonIndex = visibleButtons.indexOf(newButton);
+                updateButtonSelection();
+                
+                // Adăugăm sunet la navigare
+                playSound('navigation');
+            }
+        }
+    }
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+    // Evenimente
+    searchInput.addEventListener('input', filterButtons);
+    searchInput.addEventListener('keydown', handleKeyDown);
+    searchInput.addEventListener('focus', filterButtons);
+    
+    // Adăugăm eveniment de tastatură pentru document pentru a permite navigarea globală
+    document.addEventListener('keydown', handleKeyDown);
+    
+    // Inițializare la încărcarea paginii
+    document.querySelectorAll('.permanent-button, .site-button').forEach(btn => {
+        btn.style.display = ''; // Asigură vizibilitatea inițială
+    });
+    
+    // Organizăm butoanele și aplicăm selecția inițială
+    organizeButtonsInGrid();
+    updateButtonSelection();
+
+    // Inițializăm evenimentele pentru butoanele de curățare
+    if (clearButton) clearButton.addEventListener('click', handleClearSearch);
+    if (searchIcon) searchIcon.addEventListener('click', e => {
+        e.preventDefault();
+        handleClearSearch();
+    });
+    
+    // Re-organizăm grid-ul la redimensionarea ferestrei
+    window.addEventListener('resize', () => {
+        organizeButtonsInGrid();
+        updateButtonSelection();
+    });
+});
+
+    // Verifică dacă localStorage are aceeași versiune ca codul actual
+    const CODE_VERSION = "1.0.2"; // Incrementează această valoare când faci modificări majore
+    const savedVersion = localStorage.getItem('pageVersion');
+    
+    if (savedVersion !== CODE_VERSION) {
+      // Șterge cache-ul vechi și actualizează versiunea
+      localStorage.clear();
+      localStorage.setItem('pageVersion', CODE_VERSION);
+      localStorage.setItem('sites', localStorage.getItem('sites') || '[]');
+      
+      // Forțează reîncărcarea paginii dacă versiunea s-a schimbat
+      if (savedVersion) {
+        window.location.reload(true);
+      }
+    }
+    
+   // Funcție pentru a genera și reda sunete - păstrăm funcția originală
+function playSound(type) {
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // Utilizeaza Web Audio API pentru a genera sunete
+  const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  
+  // Creează oscilator și nod de câștig
+  const oscillator = audioContext.createOscillator();
+  const gainNode = audioContext.createGain();
+  
+  oscillator.connect(gainNode);
+  gainNode.connect(audioContext.destination);
+  
+  // Configurează sunetul în funcție de tipul de acțiune
+  if (type === 'click') {
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 1000;
+    gainNode.gain.value = 0.1;
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+    oscillator.stop(audioContext.currentTime + 0.15);
+  } else if (type === 'add') {
+    oscillator.type = 'sine';
+    oscillator.frequency.value = 1200;
+    gainNode.gain.value = 0.1;
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.3);
+    oscillator.stop(audioContext.currentTime + 0.3);
+  } else if (type === 'delete') {
+    oscillator.type = 'triangle';
+    oscillator.frequency.value = 300;
+    gainNode.gain.value = 0.1;
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+    oscillator.stop(audioContext.currentTime + 0.4);
+  } else if (type === 'toggle') {
+    oscillator.type = 'square';
+    oscillator.frequency.value = 800;
+    gainNode.gain.value = 0.1;
+    oscillator.start();
+    gainNode.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.2);
+    oscillator.stop(audioContext.currentTime + 0.2);
+  }
+  
+  console.log("Sound played:", type);
+}
+
+// Adăugăm eventListeners la încărcarea DOM-ului
+document.addEventListener('DOMContentLoaded', function() {
+  // Function to add sound to a specific button
+  function addSoundToButton(buttonId, soundType) {
+    const button = document.getElementById(buttonId);
+    if (button) {
+      button.addEventListener('click', function(e) {
+        // Only play the sound, don't prevent default behavior
+        playSound(soundType);
+      });
+      console.log("Sound added to button:", buttonId);
+    } else {
+      console.warn("Button not found:", buttonId);
+    }
+  }
+
+  // Add sounds to all permanent buttons
+  const buttons = document.querySelectorAll('.permanent-button, .site-button');
+  buttons.forEach(button => {
+    button.addEventListener('click', function() {
+      new Audio('click.mp3').play().catch(e => console.log("Eroare sunet click:", e));
+    });
+    console.log("Click sound added to button:", button.id || "unnamed button");
+  });
+
+ // Add specific sounds to buttons
+  addSoundToButton('yahooButton_1', 'click');
+  addSoundToButton('youtubeButton_57', 'add');
+  addSoundToButton('facebookButton_58', 'toggle');
+  addSoundToButton('ebayButton_59', 'delete');
+  addSoundToButton('clicksudButton_2', 'click');
+  addSoundToButton('filelistButton_3', 'add');
+  addSoundToButton('divxButton_4', 'toggle');
+  addSoundToButton('imdbButton_5', 'delete');
+  addSoundToButton('DeepAIButton_6', 'delete');
+ // Adaugă sunete pentru butoanele tehnologie și dezvoltare
+  addSoundToButton('arduinoButton_7', 'click');
+  addSoundToButton('openaiButton_8', 'add');
+  addSoundToButton('blynkButton_9', 'toggle');
+  addSoundToButton('appinventorButton_10', 'click');
+  addSoundToButton('githubButton_11', 'add');
+  addSoundToButton('gmailButton_12', 'toggle');
+  addSoundToButton('adafruitButton_13', 'delete');
+  addSoundToButton('dropboxButton_14', 'click');
+  addSoundToButton('kodularButton_15', 'add');
+  addSoundToButton('makewithtecButton_16', 'toggle');
+  addSoundToButton('microsoftButton_17', 'click');
+  addSoundToButton('deepseekButton_18', 'add');
+  addSoundToButton('geminiaiButton_19', 'delete');
+  addSoundToButton('teamviewerButton_20', 'toggle');
+  addSoundToButton('elevenlabsButton_21', 'click');
+
+
+
+
+// Adaugă sunete pentru butoanele cumpărături și servicii
+  addSoundToButton('ebayukButton_22', 'add');
+  addSoundToButton('aliexpressButton_23', 'delete');
+  addSoundToButton('fiverrButton_24', 'toggle');
+  addSoundToButton('lebaraButton_25', 'click');
+  addSoundToButton('paypalButton_26', 'add');
+  
+  // Restul butoanelor film și servicii
+  addSoundToButton('filmehdAPIButton_38', 'click');
+  addSoundToButton('voxFilmeButton_39', 'toggle');
+  addSoundToButton('justWatchFilmeButton_40', 'delete');
+  addSoundToButton('portalulTVButton_41', 'toggle');
+  addSoundToButton('topFilmeHDButton_42', 'click');
+
+
+
+
+
+
+
+
+  // Add sound to the add link button
+  // Try different possible selectors for the add link button
+  const addLinkButtons = document.querySelectorAll('.add-link-button, #addLinkButton, #addButton, button[data-action="add"], .add-site-button');
+  addLinkButtons.forEach(button => {
+    button.addEventListener('click', function() {
+      playSound('add');
+      console.log("Add sound played for add link button");
+    });
+  });
+  
+  // Also try to add sound to any button containing "add" in its text
+  document.querySelectorAll('button, .button, a.button, .btn').forEach(btn => {
+    if (btn.textContent && btn.textContent.toLowerCase().includes('add')) {
+      btn.addEventListener('click', function() {
+        playSound('add');
+        console.log("Add sound played for button with 'add' text");
+      });
+    }
+  });
+
+  // You can test if the script is running with a simple console log
+  console.log("Sound script initialized successfully");
+  
+  // Optional: Test sound on page load
+  setTimeout(function() {
+    new Audio('click.mp3').play().catch(e => console.log("Eroare sunet click:", e));
+  }, 1000);
+});
+    
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Configurație
+const config = {
+  weather: {
+    apiKey: '0f4e801084a03936735cb83d418f400a',
+    lat: 52.6262,
+    lon: -2.4854,
+    refreshInterval: 30 * 60 * 1000, // 30 minute în milisecunde
+    elementId: 'weather',
+    detectLocation: true // setează la false pentru a folosi coordonatele fixe
+  },
+  dateTime: {
+    elementId: 'dateTime',
+    refreshInterval: 1000, // 1 secundă în milisecunde
+    dayNames: ["Duminică", "Luni", "Marți", "Miercuri", "Joi", "Vineri", "Sâmbătă"],
+    monthNames: ["ianuarie", "februarie", "martie", "aprilie", "mai", "iunie",
+                "iulie", "august", "septembrie", "octombrie", "noiembrie", "decembrie"],
+    dayEmojis: ["🌞", "🌙", "🔥", "⚡", "🌈", "💎", "🏆"],
+    timeEmojis: {
+      morning: { start: 5, end: 12, emoji: "🌅" },
+      day: { start: 12, end: 17, emoji: "☀️" },
+      evening: { start: 17, end: 21, emoji: "🌇" },
+      night: { emoji: "🌃" } // Valoare implicită
+    },
+    minuteEmojis: ["🕐", "🕑", "🕒", "🕓", "🕔", "🕕", "🕖", "🕗", "🕘", "🕙", "🕚", "🕛"]
+  },
+
+
+
+
+
+
+
+
+
+
+
+  soundEffects: {
+    enabled: false, // Setează la true pentru a activa sunetele
+    sounds: {
+      tick: "sounds/tick.mp3",
+      weather: "sounds/weather.mp3",
+      theme: "sounds/switch.mp3"
+    }
+  },
+  appearance: {
+    useDarkMode: true, // Setează la false pentru temă deschisă
+    adaptToWeather: true, // Schimbă fundalul în funcție de vreme
+    adaptToDayNight: true // Schimbă tema în funcție de momentul zilei
+  }
+};
+
+// Aplicație
+document.addEventListener('DOMContentLoaded', function() {
+  // Inițializează tema
+  AppTheme.init();
+  
+  // Detectarea locației dacă utilizatorul permite (opțional)
+  if (navigator.geolocation && config.weather.detectLocation) {
+    navigator.geolocation.getCurrentPosition(position => {
+      config.weather.lat = position.coords.latitude;
+      config.weather.lon = position.coords.longitude;
+      WeatherModule.fetchWeather(); // Reîncarcă vremea cu noua locație
+    }, error => {
+      console.log("Locația nu a putut fi detectată, se folosesc coordonatele implicite.");
+    });
+  }
+  
+  // Inițializare module
+  WeatherModule.init();
+  DateTimeModule.init();
+  
+  // Dezactivează click dreapta
+  document.addEventListener('contextmenu', function(e) {
+    e.preventDefault();
+  }, false);
+  
+  // Adaugă butonul de schimbare a temei
+  createThemeToggle();
+});
+
+// Modul pentru tema aplicației
+const AppTheme = {
+  init: function() {
+    // Setează tema inițială
+    this.setTheme(config.appearance.useDarkMode);
+    
+    // Adaptează tema în funcție de ora zilei, dacă este activat
+    if (config.appearance.adaptToDayNight) {
+      const currentHour = new Date().getHours();
+      // Mod întunecat între 19:00 și 6:00
+      if (currentHour >= 19 || currentHour < 6) {
+        this.setTheme(true);
+      } else {
+        this.setTheme(false);
+      }
+    }
+  },
+  
+  setTheme: function(isDark) {
+    if (isDark) {
+      document.body.classList.add('dark-theme');
+    } else {
+      document.body.classList.remove('dark-theme');
+    }
+  },
+  
+  toggleTheme: function() {
+    const isDarkTheme = document.body.classList.contains('dark-theme');
+    this.setTheme(!isDarkTheme);
+    
+    // Redă sunet la schimbarea temei
+    if (config.soundEffects.enabled) {
+      const audio = new Audio(config.soundEffects.sounds.theme);
+      audio.play().catch(e => console.log("Nu s-a putut reda sunetul: ", e));
+    }
+  }
+};
+
+// Creează butonul pentru schimbarea temei
+function createThemeToggle() {
+  const themeButton = document.createElement('button');
+  themeButton.className = 'theme-toggle';
+  themeButton.innerHTML = '🌓';
+  themeButton.title = 'Schimbă tema (întunecată/luminoasă)';
+  themeButton.addEventListener('click', () => AppTheme.toggleTheme());
+  document.body.appendChild(themeButton);
+}
+
+// Modul pentru vreme
+const WeatherModule = {
+  init: function() {
+    this.weatherElement = document.getElementById(config.weather.elementId);
+    if (!this.weatherElement) {
+      console.error(`Elementul cu ID-ul "${config.weather.elementId}" nu a fost găsit.`);
+      return;
+    }
+    
+    // Afișează loading state
+    this.weatherElement.innerHTML = `
+      <div class="weather-card">
+        <div class="weather-loading">
+          <div class="loading-spinner"></div>
+          <div>Se încarcă informații meteo...</div>
+        </div>
+      </div>
+    `;
+    
+    // Încarcă vremea inițial
+    this.fetchWeather();
+    
+    // Configurează actualizarea periodică a vremii
+    setInterval(() => this.fetchWeather(), config.weather.refreshInterval);
+  },
+  
+  // Obține emoji potrivit pentru descrierea vremii
+  getWeatherEmoji: function(desc) {
+    const description = desc.toLowerCase();
+    
+    const weatherTypes = [
+      { keywords: ["clear"], emoji: "☀️", class: "clear" },
+      { keywords: ["cloud", "broken"], emoji: "☁️", class: "clouds" },
+      { keywords: ["rain"], emoji: "🌧️", class: "rain" },
+      { keywords: ["drizzle"], emoji: "🌦️", class: "drizzle" },
+      { keywords: ["storm", "thunder"], emoji: "⛈️", class: "thunderstorm" },
+      { keywords: ["snow"], emoji: "❄️", class: "snow" },
+      { keywords: ["mist", "fog"], emoji: "🌫️", class: "fog" },
+      { keywords: ["haze"], emoji: "🌁", class: "haze" },
+      { keywords: ["dust", "sand"], emoji: "💨", class: "dust" }
+    ];
+    
+    for (const type of weatherTypes) {
+      if (type.keywords.some(keyword => description.includes(keyword))) {
+        return { emoji: type.emoji, class: type.class };
+      }
+    }
+    
+    return { emoji: "🌡️", class: "default" }; // Emoji implicit
+  },
+  
+  // Conversie direcție vânt în formă textuală
+  getWindDirection: function(degrees) {
+    const directions = [
+      "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
+      "S", "SSV", "SV", "VSV", "V", "VNV", "NV", "NNV"
+    ];
+    const index = Math.round(degrees / 22.5) % 16;
+    return directions[index];
+  },
+  
+  // Cerere API pentru vremea curentă
+  fetchWeather: function() {
+    const { apiKey, lat, lon } = config.weather;
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&lang=ro&appid=${apiKey}`;
+    
+    fetch(url)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`Eroare HTTP: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        this.updateWeatherUI(data);
+        
+        // Actualizează fundalul în funcție de vreme, dacă este activat
+        if (config.appearance.adaptToWeather) {
+          this.updateBackgroundBasedOnWeather(data);
+        }
+        
+        // Redă sunet dacă este activat
+        if (config.soundEffects.enabled) {
+          const audio = new Audio(config.soundEffects.sounds.weather);
+          audio.play().catch(e => console.log("Nu s-a putut reda sunetul: ", e));
+        }
+      })
+      .catch(error => {
+        console.error("Eroare la obținerea datelor despre vreme:", error);
+        this.weatherElement.innerHTML = `
+          <div class="weather-card">
+            <div class="weather-error">
+              <div>Eroare la încărcarea vremii.</div>
+              <button onclick="WeatherModule.fetchWeather()">Reîncarcă</button>
+            </div>
+          </div>
+        `;
+      });
+  },
+  
+  // Actualizează fundalul paginii bazat pe condițiile meteo
+  updateBackgroundBasedOnWeather: function(data) {
+    if (!data || !data.weather || !data.weather[0]) return;
+    
+    // Elimină toate clasele meteo existente
+    document.body.classList.remove(
+      'clear', 'clouds', 'broken', 'rain', 'drizzle', 
+      'thunderstorm', 'snow', 'fog', 'haze', 'mist', 'dust', 'sand'
+    );
+    
+    const weatherInfo = this.getWeatherEmoji(data.weather[0].description);
+    document.body.classList.add(weatherInfo.class);
+  },
+  
+  // Actualizează interfața cu datele despre vreme
+  updateWeatherUI: function(data) {
+    if (!data || !data.weather || !data.weather[0]) {
+      this.weatherElement.innerHTML = `
+        <div class="weather-card">
+          <div class="weather-error">Date despre vreme indisponibile.</div>
+        </div>
+      `;
+      return;
+    }
+    
+    const temp = data.main.temp.toFixed(1);
+    const feelsLike = data.main.feels_like.toFixed(1);
+    const humidity = data.main.humidity;
+    const desc = data.weather[0].description;
+    const weatherInfo = this.getWeatherEmoji(desc);
+    const city = data.name || "Locație necunoscută";
+    const windSpeed = Math.round(data.wind.speed * 3.6); // m/s la km/h
+    const windDirection = this.getWindDirection(data.wind.deg);
+    const pressure = data.main.pressure;
+    const visibility = data.visibility ? (data.visibility / 1000).toFixed(1) : "N/A";
+    const sunrise = data.sys && data.sys.sunrise ? this.formatTime(data.sys.sunrise * 1000) : "N/A";
+    const sunset = data.sys && data.sys.sunset ? this.formatTime(data.sys.sunset * 1000) : "N/A";
+    
+    
+   this.weatherElement.innerHTML = `
+  <div class="weather-card weather-widget">
+    <div class="weather-header">
+      <div class="weather-emoji">${weatherInfo.emoji}</div>
+      <div class="weather-location">${city}</div>
+      <div class="weather-temp">${temp}°C</div>
+      <div class="weather-desc">${desc}</div>
+    </div>
+        
+ <!-- EXEMPLU HTML -->
+<div class="weather-details">
+  <div class="weather-row">
+    <!-- 1) Temperatura reală -->
+    <div class="weather-info">
+      <div class="emoji">🌡️</div>
+      <div class="label">Temperatura reală</div>
+      <div class="value">${temp}°C</div>
+    </div>
+
+    <!-- 2) Temperatura resimțită -->
+    <div class="weather-info">
+      <div class="emoji">🤔</div>
+      <div class="label">Temperatura resimțită</div>
+      <div class="value">${feelsLike}°C</div>
+    </div>
+
+    <!-- 3) Umiditate -->
+    <div class="weather-info">
+      <div class="emoji">💧</div>
+      <div class="label">Umiditate</div>
+      <div class="value">${humidity}%</div>
+    </div>
+
+    <!-- 4) Presiune -->
+    <div class="weather-info">
+      <div class="emoji">🧭</div>
+      <div class="label">Presiune</div>
+      <div class="value">${pressure} hPa</div>
+    </div>
+
+    <!-- 5) Vânt -->
+    <div class="weather-info">
+      <div class="emoji">💨</div>
+      <div class="label">Vânt</div>
+      <div class="value">${windSpeed} km/h ${windDirection}</div>
+    </div>
+
+    <!-- 6) Vizibilitate -->
+    <div class="weather-info">
+      <div class="emoji">👁️</div>
+      <div class="label">Vizibilitate</div>
+      <div class="value">${visibility} km</div>
+    </div>
+
+    <!-- 7) Răsărit -->
+    <div class="weather-info">
+      <div class="emoji">🌄</div>
+      <div class="label">Răsărit</div>
+      <div class="value">${sunrise}</div>
+    </div>
+
+    <!-- 8) Apus -->
+    <div class="weather-info">
+      <div class="emoji">🌆</div>
+      <div class="label">Apus</div>
+      <div class="value">${sunset}</div>
+    </div>
+  </div>
+</div>
+
+    `;
+  },
+  
+  // Formatează timestamp Unix în oră locală (HH:MM)
+  formatTime: function(timestamp) {
+    const date = new Date(timestamp);
+    return `${date.getHours().toString().padStart(2, "0")}:${date.getMinutes().toString().padStart(2, "0")}`;
+  }
+};
+
+// Modul pentru dată și oră
+const DateTimeModule = {
+  init: function() {
+    this.dateTimeElement = document.getElementById(config.dateTime.elementId);
+    if (!this.dateTimeElement) {
+      console.error(`Elementul cu ID-ul "${config.dateTime.elementId}" nu a fost găsit.`);
+      return;
+    }
+    
+    // Actualizează data și ora inițial
+    this.updateDateTime();
+    
+    // Configurează actualizarea periodică a datei și orei
+    setInterval(() => {
+      this.updateDateTime();
+      
+      // Redă sunet de ticăit de ceas dacă este activat
+      if (config.soundEffects.enabled) {
+        const now = new Date();
+        if (now.getSeconds() === 0 || now.getSeconds() === 30) {
+          const audio = new Audio(config.soundEffects.sounds.tick);
+          audio.play().catch(e => console.log("Nu s-a putut reda sunetul: ", e));
+        }
+      }
+    }, config.dateTime.refreshInterval);
+  },
+  
+  // Obține emoji potrivit pentru ora curentă
+  getTimeEmoji: function(hours) {
+    const { timeEmojis } = config.dateTime;
+    
+    if (hours >= timeEmojis.morning.start && hours < timeEmojis.morning.end) {
+      return timeEmojis.morning.emoji;
+    } else if (hours >= timeEmojis.day.start && hours < timeEmojis.day.end) {
+      return timeEmojis.day.emoji;
+    } else if (hours >= timeEmojis.evening.start && hours < timeEmojis.evening.end) {
+      return timeEmojis.evening.emoji;
+    } else {
+      return timeEmojis.night.emoji;
+    }
+  },
+  
+  // Actualizează interfața cu data și ora curente
+  updateDateTime: function() {
+    const now = new Date();
+    const { dayNames, monthNames, dayEmojis, minuteEmojis } = config.dateTime;
+    
+    // Obține componentele de dată și oră
+    const dayName = dayNames[now.getDay()];
+    const dayEmoji = dayEmojis[now.getDay()];
+    const day = now.getDate();
+    const month = monthNames[now.getMonth()];
+    const year = now.getFullYear();
+    const hours = now.getHours().toString().padStart(2, "0");
+    const minutes = now.getMinutes().toString().padStart(2, "0");
+    const seconds = now.getSeconds().toString().padStart(2, "0");
+    
+    // Obține emoji-urile
+    const timeEmoji = this.getTimeEmoji(now.getHours());
+    const minuteIndex = Math.floor(now.getMinutes() / 5) % 12;
+    const minuteEmoji = minuteEmojis[minuteIndex];
+    
+    // Calculează săptămâna din an
+    const firstDayOfYear = new Date(now.getFullYear(), 0, 1);
+    const pastDaysOfYear = (now - firstDayOfYear) / 86400000;
+    const weekNumber = Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+    
+    // Construiește și afișează rezultatul
+    const formatted = `
+      <div class="datetime-card">
+        <div class="date-part">
+          <div class="day-row">
+            <span class="day-name">${dayName}</span>
+            <span class="day-emoji">${dayEmoji}</span>
+            <span class="time-emoji">${timeEmoji}</span>
+          </div>
+          
+          <div class="date-row">
+            <span class="date-number">${day} ${month} ${year}</span>
+            <span class="week-number">(Săptămâna ${weekNumber})</span>
+          </div>
+        </div>
+        
+        <div class="time-part">
+          <div class="digital-clock clock">
+            <span class="hours">${hours}</span>
+            <span class="time-separator blink">:</span>
+            <span class="minutes">${minutes}</span>
+            <span class="time-separator">:</span>
+            <span class="seconds">${seconds}</span>
+          </div>
+          <span class="minute-emoji">${minuteEmoji}</span>
+        </div>
+      </div>
+    `;
+    
+    this.dateTimeElement.innerHTML = formatted;
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  
+  
+  // Recuperăm lista de site-uri din localStorage sau inițializăm un array gol
+  let sites = JSON.parse(localStorage.getItem('sites')) || [];
+
+  // Variabilă globală pentru starea formularului
+  let isFormOpen = false;
+
+  // Funcție pentru închiderea tuturor butoanelor în starea long-pressed, cu excepția celui specificat
+  function closeAllLongPressedExcept(exceptButton) {
+    document.querySelectorAll('.site-button.long-pressed').forEach(btn => {
+      if (btn !== exceptButton) {
+        btn.classList.remove('long-pressed');
+      }
+    });
+  }
+
+  // Helper: Adaugă evenimentele de long press și click pentru butonul unui site
+  function addSiteButtonListeners(button, site) {
+    let pressTimer;
+    let longPressTriggered = false;
+
+    const startPress = (e) => {
+      // Nu inițiem long press dacă se face click pe elementele de editare/ștergere
+      if (e.target.closest('.edit-delete')) return;
+      e.preventDefault();
+      pressTimer = setTimeout(() => {
+        closeAllLongPressedExcept(button);
+        button.classList.add('long-pressed');
+        longPressTriggered = true;
+        playSound('toggle');
+      }, 800);
+      if (e.type === 'touchstart') {
+        button.classList.add('active-button');
+      }
+    };
+
+    const cancelPress = (e) => {
+      clearTimeout(pressTimer);
+      if (e.type === 'touchend' || e.type === 'touchcancel') {
+        button.classList.remove('active-button');
+      }
+    };
+
+    const handleClick = (e) => {
+      // Dacă evenimentul provine din containerul edit-delete, nu facem nimic
+      if (e.target.closest('.edit-delete')) return;
+      if (!button.classList.contains('long-pressed')) {
+        new Audio('click.mp3').play().catch(e => console.log("Eroare sunet click:", e));
+        window.open(site.url, '_blank');
+      }
+    };
+
+    button.addEventListener('mousedown', startPress);
+    button.addEventListener('mouseup', cancelPress);
+    button.addEventListener('mouseleave', cancelPress);
+    button.addEventListener('touchstart', startPress);
+    button.addEventListener('touchend', (e) => {
+      cancelPress(e);
+      if (!longPressTriggered) {
+        handleClick(e);
+      }
+      longPressTriggered = false;
+    });
+    button.addEventListener('touchcancel', cancelPress);
+    button.addEventListener('click', handleClick);
+  }
+
+  // Funcția care redă lista de site-uri în container
+  function renderSites() {
+    const container = document.getElementById('sitesContainer');
+    container.innerHTML = '';
+    sites.forEach((site, index) => {
+      const button = document.createElement('div');
+      button.className = 'site-button';
+
+      // Imaginea site-ului
+      const imgElem = document.createElement('img');
+      imgElem.src = site.img;
+      imgElem.alt = '';
+      button.appendChild(imgElem);
+
+      // Numele site-ului
+      const nameElem = document.createElement('span');
+      nameElem.textContent = site.name;
+      button.appendChild(nameElem);
+
+      // Container pentru butoanele de editare și ștergere
+      const editDeleteContainer = document.createElement('div');
+      editDeleteContainer.className = 'edit-delete';
+
+      // Butonul de editare
+      const editBtn = document.createElement('button');
+      editBtn.innerHTML = '✏️';
+      editBtn.addEventListener('click', function(e) {
+        e.stopPropagation(); // împiedicăm propagarea evenimentului
+        new Audio('click.mp3').play().catch(e => console.log("Eroare sunet click:", e));
+        editSite(index);
+      });
+      editDeleteContainer.appendChild(editBtn);
+
+      // Butonul de ștergere
+      const deleteBtn = document.createElement('button');
+      deleteBtn.innerHTML = '🗑️';
+      deleteBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        playSound('delete');
+        deleteSite(index);
+      });
+      editDeleteContainer.appendChild(deleteBtn);
+
+      button.appendChild(editDeleteContainer);
+
+      // Adăugăm evenimentele de long press și click pentru buton
+      addSiteButtonListeners(button, site);
+
+      container.appendChild(button);
+    });
+  }
+
+  // Funcția de adăugare site
+  function addSite() {
+    const name = document.getElementById('siteName').value.trim();
+    const url = document.getElementById('siteURL').value.trim();
+    let img = document.getElementById('siteImg').value.trim();
+
+    if (!name || !url) {
+      alert('Completează cel puțin numele și URL-ul.');
+      return;
+    }
+
+    if (!img) {
+      try {
+        const domain = new URL(url).hostname.replace(/^www\./, '');
+        img = `https://www.google.com/s2/favicons?sz=64&domain=${domain}`;
+      } catch {
+        alert("URL invalid.");
+        return;
+      }
+    }
+
+    sites.push({ name, url, img });
+    localStorage.setItem('sites', JSON.stringify(sites));
+    renderSites();
+
+    // Închidem formularul după adăugarea site-ului
+    isFormOpen = true; // Forțăm starea la deschis, astfel toggleForm va închide formularul
+    toggleForm();
+  }
+
+  // Funcția de editare site
+  function editSite(index) {
+    new Audio('click.mp3').play().catch(e => console.log("Eroare sunet click:", e));
+    const newName = prompt("Nume site:", sites[index].name);
+    if (newName === null) return;
+    const newURL = prompt("URL site:", sites[index].url);
+    if (newURL === null) return;
+    const newImg = prompt("URL imagine:", sites[index].img);
+    if (newImg === null) return;
+    if (newName && newURL && newImg) {
+      sites[index] = { name: newName, url: newURL, img: newImg };
+      localStorage.setItem('sites', JSON.stringify(sites));
+      renderSites();
+    }
+  }
+
+  // Funcția de ștergere site
+  function deleteSite(index) {
+    if (confirm("Sigur vrei să ștergi acest site?")) {
+      sites.splice(index, 1);
+      localStorage.setItem('sites', JSON.stringify(sites));
+      renderSites();
+    }
+  }
+
+  // Funcția care elimină butoanele duplicate (bazat pe URL)
+  function removeDuplicateButtons() {
+    const siteURLs = new Set();
+    const permanentLinks = Array.from(document.querySelectorAll('.permanent-button')).map(btn => btn.href);
+    permanentLinks.forEach(url => siteURLs.add(url));
+
+    let hasChanges = false;
+    sites = sites.filter(site => {
+      if (siteURLs.has(site.url)) {
+        hasChanges = true;
+        return false;
+      } else {
+        siteURLs.add(site.url);
+        return true;
+      }
+    });
+
+    if (hasChanges) {
+      localStorage.setItem('sites', JSON.stringify(sites));
+      renderSites();
+    }
+  }
+
+  // Eveniment pentru tasta Escape: închide starea long-pressed și, dacă este deschis, formularul
+  document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+      document.querySelectorAll('.site-button.long-pressed').forEach(btn => {
+        btn.classList.remove('long-pressed');
+      });
+      if (isFormOpen) {
+        toggleForm();
+      }
+    }
+  });
+
+  // Inițializare și gestionare formular la încărcarea documentului
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleBtn = document.getElementById('toggleAddBtn');
+    const toggleLabel = document.getElementById('toggleLabel');
+    const addSiteForm = document.getElementById('addSiteForm');
+    const inputs = addSiteForm.querySelectorAll('input');
+
+    // Funcția centrală pentru deschiderea/închiderea formularului
+    window.toggleForm = function() {
+  try {
+    new Audio('toggle.mp3').play();
+  } catch (e) {
+    console.log("Eroare redare sunet:", e);
+  }
+      isFormOpen = !isFormOpen;
+      if (isFormOpen) {
+        addSiteForm.classList.add('visible');
+        toggleBtn.classList.add('active');
+        toggleLabel.textContent = 'Închide';
+        if (window.innerWidth <= 768) {
+          setTimeout(() => {
+            const formTop = addSiteForm.getBoundingClientRect().top + window.pageYOffset - 80;
+            window.scrollTo({ top: formTop, behavior: 'smooth' });
+          }, 300);
+        }
+      } else {
+        addSiteForm.classList.remove('visible');
+        toggleBtn.classList.remove('active');
+        toggleLabel.textContent = 'Deschide';
+        inputs.forEach(input => {
+          input.value = '';
+        });
+      }
+    };
+
+    toggleBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      toggleForm();
+    });
+
+    // Gestionăm focusul pe input-uri pentru a preveni scrollarea automată
+    inputs.forEach(input => {
+      input.addEventListener('focus', function(e) {
+        e.preventDefault();
+        document.body.classList.add('disable-transitions');
+        const scrollPos = window.pageYOffset;
+        setTimeout(() => {
+          window.scrollTo(0, scrollPos);
+          document.body.classList.remove('disable-transitions');
+        }, 10);
+      });
+      input.addEventListener('click', function(e) {
+        e.stopPropagation();
+      });
+    });
+
+    // Previne închiderea formularului când se face click în interiorul lui
+    addSiteForm.addEventListener('click', function(e) {
+      e.stopPropagation();
+    });
+
+    // Gestionăm butonul de adăugare site
+    const addSiteBtn = document.getElementById('addSiteBtn');
+    if (addSiteBtn) {
+      addSiteBtn.removeAttribute('onclick');
+      addSiteBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        addSite();
+      });
+    }
+
+    // Funcție pentru gestionarea redimensionării ferestrei
+    function handleResize() {
+      if (isFormOpen && window.innerWidth <= 768) {
+        const formTop = addSiteForm.getBoundingClientRect().top + window.pageYOffset - 80;
+        window.scrollTo({ top: formTop, behavior: 'auto' });
+      }
+    }
+
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', function() {
+      setTimeout(handleResize, 200);
+    });
+
+    // Eliminăm butoanele duplicate și redăm lista de site-uri
+    removeDuplicateButtons();
+    renderSites();
+  });
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.permanent-button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      try {
+        new Audio('permanent.mp3').play();
+      } catch(e) {
+        console.log("Eroare redare sunet permanent:", e);
+      }
+    });
+  });
+});
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+
+  var el_DeepAIButton_6 = document.getElementById('DeepAIButton_6');
+  if (el_DeepAIButton_6) {
+    el_DeepAIButton_6.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_cinepubFilmeButton_43 = document.getElementById('cinepubFilmeButton_43');
+  if (el_cinepubFilmeButton_43) {
+    el_cinepubFilmeButton_43.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_filmehdAPIButton_38 = document.getElementById('filmehdAPIButton_38');
+  if (el_filmehdAPIButton_38) {
+    el_filmehdAPIButton_38.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_geminiaiButton_19 = document.getElementById('geminiaiButton_19');
+  if (el_geminiaiButton_19) {
+    el_geminiaiButton_19.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_gmailButton_12 = document.getElementById('gmailButton_12');
+  if (el_gmailButton_12) {
+    el_gmailButton_12.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_justWatchFilmeButton_40 = document.getElementById('justWatchFilmeButton_40');
+  if (el_justWatchFilmeButton_40) {
+    el_justWatchFilmeButton_40.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_openaiButton_8 = document.getElementById('openaiButton_8');
+  if (el_openaiButton_8) {
+    el_openaiButton_8.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_sitesContainer = document.getElementById('sitesContainer');
+  if (el_sitesContainer) {
+    el_sitesContainer.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_topFilmeHDButton_42 = document.getElementById('topFilmeHDButton_42');
+  if (el_topFilmeHDButton_42) {
+    el_topFilmeHDButton_42.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+  var el_voxFilmeButton_39 = document.getElementById('voxFilmeButton_39');
+  if (el_voxFilmeButton_39) {
+    el_voxFilmeButton_39.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet categorie: ", e);
+      }
+    });
+  }
+
+});
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+
+  var el = document.getElementById('yahooButton_1');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('clicksudButton_2');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('filelistButton_3');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('divxButton_4');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('imdbButton_5');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('DeepAIButton_6');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('arduinoButton_7');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('openaiButton_8');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('blynkButton_9');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('appinventorButton_10');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('githubButton_11');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('gmailButton_12');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('adafruitButton_13');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('dropboxButton_14');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('kodularButton_15');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('makewithtecButton_16');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('microsoftButton_17');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('deepseekButton_18');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('geminiaiButton_19');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('teamviewerButton_20');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('elevenlabsButton_21');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('ebayukButton_22');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('aliexpressButton_23');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('fiverrButton_24');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('lebaraButton_25');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('paypalButton_26');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('counciltaxtelfordButton_27');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('octopusenergyButton_28');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('standardlifeButton_29');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('virginmediaButton_30');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('universalcreditukButton_31');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('deeplButton_32');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('surfsharkButton_33');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('totalavButton_34');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('quillbotButton_35');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('trading212Button_36');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('etoroButton_37');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('filmehdAPIButton_38');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('voxFilmeButton_39');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('justWatchFilmeButton_40');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('portalulTVButton_41');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('topFilmeHDButton_42');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('cinepubFilmeButton_43');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('plutoTVButton_44');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('despreSerialeButton_45');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('voyoButton_46');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('filmflixButton_47');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('tubiButton_48');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('movies123Button_49');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('crackleButton_50');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('rokuButton_51');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('filmzieButton_52');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('yidioButton_53');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('fawesomeButton_54');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('contvButton_55');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('cinebyButton_56');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('youtubeButton_57');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('facebookButton_58');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('ebayButton_59');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('amazonTranslateButton_60');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('smartcatButton_61');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('bingTranslatorButton_62');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('grammarlyButton_63');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('gingerButton_64');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('hemingwayButton_65');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('grammarCheckButton_66');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+  var el = document.getElementById('scribbrButton_67');
+  if (el) {
+    el.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch(e) {
+        console.log("Eroare sunet data-category: ", e);
+      }
+    });
+  }
+
+});
+  </script>
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.category-buttons button').forEach(function(button) {
+    button.addEventListener('click', function() {
+      try {
+        new Audio('categorie.mp3').play();
+      } catch (e) {
+        console.log("Eroare sunet .category-buttons:", e);
+      }
+    });
+  });
+});
+  </script>
+ 
+<script>
+  window.addEventListener('pageshow', function (event) {
+    if (event.persisted || performance.getEntriesByType("navigation")[0].type === "back_forward") {
+      const input = document.querySelector('.search-input-v2');
+      if (input) input.value = '';
+    }
+  });
+</script>
+
+
+<script>
+document.querySelectorAll('.site-button').forEach(btn => {
+  btn.setAttribute('draggable', 'true');
+});
+
+let dragged;
+
+document.addEventListener('dragstart', (e) => {
+  if (e.target.classList.contains('site-button')) {
+    dragged = e.target;
+    e.dataTransfer.effectAllowed = 'move';
+  }
+});
+
+document.addEventListener('dragover', (e) => {
+  if (e.target.classList.contains('site-button')) {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+  }
+});
+
+document.addEventListener('drop', (e) => {
+  if (e.target.classList.contains('site-button') && dragged) {
+    e.preventDefault();
+    const container = dragged.parentNode;
+    const dropped = e.target;
+    if (dragged !== dropped) {
+      const draggedIndex = [...container.children].indexOf(dragged);
+      const droppedIndex = [...container.children].indexOf(dropped);
+      if (draggedIndex < droppedIndex) {
+        container.insertBefore(dragged, dropped.nextSibling);
+      } else {
+        container.insertBefore(dragged, dropped);
+      }
+    }
+  }
+});
+</script>
+
+
+<script>
+document.querySelector('.search-input-v2')?.addEventListener('input', function(e) {
+  const query = e.target.value.toLowerCase().trim();
+  const buttons = document.querySelectorAll('.permanent-button, .site-button');
+
+  buttons.forEach(button => {
+    const text = button.innerText.toLowerCase();
+    const id = button.id?.toLowerCase() || '';
+    const category = button.getAttribute('data-category')?.toLowerCase() || '';
+    const dataAttrs = Array.from(button.attributes)
+      .filter(attr => attr.name.startsWith('data-'))
+      .map(attr => attr.value.toLowerCase())
+      .join(' ');
+
+    const combinedText = `${text} ${id} ${category} ${dataAttrs}`;
+
+    if (combinedText.includes(query)) {
+      button.style.display = '';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+});
+</script>
+
+
+
+
+
+<script>
+document.querySelector('.search-input')?.addEventListener('input', function(e) {
+  const query = e.target.value.toLowerCase().trim();
+  const buttons = document.querySelectorAll('.permanent-button');
+
+  buttons.forEach(button => {
+    const text = button.innerText.toLowerCase();
+    const id = button.id?.toLowerCase() || '';
+    const category = button.getAttribute('data-category')?.toLowerCase() || '';
+    const dataAttrs = Array.from(button.attributes)
+      .filter(attr => attr.name.startsWith('data-'))
+      .map(attr => attr.value.toLowerCase())
+      .join(' ');
+
+    const combinedText = `${text} ${id} ${category} ${dataAttrs}`;
+
+    if (combinedText.includes(query)) {
+      button.style.display = '';
+    } else {
+      button.style.display = 'none';
+    }
+  });
+});
+</script>
+
+
+
+
+
+</body>
+</html>
